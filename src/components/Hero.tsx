@@ -33,15 +33,13 @@ export default function Hero() {
         </p>
 
         <div className="flex gap-4 mt-10 flex-wrap">
-          <button className="px-6 py-3 rounded-2xl bg-white text-black font-semibold flex items-center gap-2 hover:shadow-lg transition">
-           <a
-            href="Projects.tsx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
-          ></a> Explore Projects
+          <a 
+            href="#projects" 
+            className="px-6 py-3 rounded-2xl bg-white text-black font-semibold flex items-center gap-2 hover:shadow-lg transition"
+          >
+            Explore Projects
             <ArrowRight size={18} />
-          </button>
+          </a>
 
           <a
             href="https://github.com/atriadha99"
