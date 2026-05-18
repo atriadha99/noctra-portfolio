@@ -14,6 +14,14 @@ export default function Projects() {
         <h3 className="text-4xl font-black">
           Andika's Creative Ecosystem
         </h3>
+
+        <blockquote className="mt-8 border-l-2 border-violet-500/50 pl-6 text-zinc-400 text-lg max-w-3xl leading-relaxed italic">
+          "Banyak orang bisa menulis kode. Banyak orang bisa meracik kopi. Namun, sangat sedikit orang yang bisa membangun sebuah brand kopi, mendesain UI aplikasinya, menghitung HPP bisnisnya, mengintegrasikan API finansialnya, lalu men-deploy seluruh ekosistem tersebut sendirian di jam 2 pagi."
+          <br /><br />
+          <span className="font-bold text-violet-400 not-italic">
+            I build things that work in the real world.
+          </span>
+        </blockquote>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">

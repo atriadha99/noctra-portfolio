@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-white/10 px-8 py-14 text-center"
+      className="relative z-10 border-t border-white/10 px-8 py-14 text-center"
     >
       <h4 className="text-3xl font-black mb-4">
         Let’s build something unforgettable.
@@ -15,15 +15,15 @@ export default function Footer() {
       </p>
 
       <div className="flex justify-center gap-6 text-zinc-400">
-        <a href="https://github.com/atriadha99" className="hover:text-white transition">
+        <a href="https://github.com/atriadha99" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
           <Github />
         </a>
 
-        <a href="https://www.instagram.com/avacadika_/" className="hover:text-white transition">
+        <a href="https://www.instagram.com/avacadika_/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
           <Instagram />
         </a>
 
-        <a href="mailto:atriadha.dev@gmail.com" className="hover:text-white transition">
+        <a href="mailto:atriadha.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
           <Mail />
         </a>
       </div>

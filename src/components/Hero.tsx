@@ -38,9 +38,14 @@ export default function Hero() {
             <ArrowRight size={18} />
           </button>
 
-          <button className="px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
+          <a
+            href="https://github.com/atriadha99"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
+          >
             Open GitHub
-          </button>
+          </a>
         </div>
       </motion.div>
 
