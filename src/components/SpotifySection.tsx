@@ -1,8 +1,8 @@
 'use client';
 
 export default function SpotifySection() {
-  // Using a verified public playlist ID
-  const playlistId = '37i9dQZF1DXcBWIGoYBM5M'; 
+  // Using the requested public playlist ID
+  const playlistId = '2KEFUQb2SGRQHycm9VQuJ4'; 
 
   return (
     <div className="max-w-6xl mx-auto px-8 py-20">
@@ -22,12 +22,12 @@ export default function SpotifySection() {
         <div className="relative z-10 overflow-hidden rounded-2xl">
           <iframe 
           data-testid="embed-iframe" 
-          style="border-radius:12px" 
-          src="https://open.spotify.com/embed/playlist/2KEFUQb2SGRQHycm9VQuJ4?utm_source=generator&theme=0" 
+          style={{ borderRadius: '12px' }} 
+          src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator&theme=0`} 
           width="100%" 
           height="352" 
-          frameBorder="0" 
-          allowfullscreen="" 
+          frameBorder={0} 
+          allowFullScreen 
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
           loading="lazy">
           </iframe>
