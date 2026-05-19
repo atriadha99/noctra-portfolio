@@ -4,25 +4,25 @@ import { useState } from 'react';
 
 const projects = {
   coffee: [
-    { title: "Temu Sua Coffee", category: "Brand Development • Coffee Shop", year: "2024", description: "Konsep coffee shop homy dengan menu unggulan Temu Aren Latte. Tagline: 'Temu tak sekedar tatap, tapi rasa yang menetap.'" },
-    { title: "Paradis Coffee and Space", category: "Coworking Space • F&B", year: "2024", description: "Coffee shop + communal space di Bandung. Business proposal & konsep ruang kreatif." },
+    { type: "coffee", title: "Temu Sua Coffee", category: "Brand Development • Coffee Shop", year: "2024", description: "Konsep coffee shop homy dengan menu unggulan Temu Aren Latte. Tagline: 'Temu tak sekedar tatap, tapi rasa yang menetap.'" },
+    { type: "coffee", title: "Paradis Coffee and Space", category: "Coworking Space • F&B", year: "2024", description: "Coffee shop + communal space di Bandung. Business proposal & konsep ruang kreatif." },
   ],
   software: [
-    { title: "Noctra Music Player", category: "Android • Java • Custom UI", year: "2024", description: "Music player aesthetic dengan custom player activity. Terintegrasi dengan Spotify SDK." },
-    { title: "Aesthetic Cashflow App", category: "Android • Financial Tracker", year: "2024", description: "Pencatatan cashflow dengan desain clean & modern, visualisasi data, dashboard." },
-    { title: "Dompet Digital Ecosystem", category: "Fintech • API Integration", year: "2024", description: "Integrasi rekening bank, e-wallet & payment gateway (Midtrans/Xendit)." },
-    { title: "Smart Finance Products", category: "Digital Products", year: "2024", description: "Dompet Rapi, Smart Sheet Keuangan (Harian/Mingguan/Bulanan) untuk Excel & Google Sheets." },
-    { title: "Java Swing Inventory", category: "Desktop App • MySQL", year: "2023", description: "Sistem pengelolaan stok barang dengan CRUD, JTable, search, database integration." },
+    { type: "software", title: "Noctra Music Player", category: "Android • Java • Custom UI", year: "2024", description: "Music player aesthetic dengan custom player activity. Terintegrasi dengan Spotify SDK." },
+    { type: "software", title: "Aesthetic Cashflow App", category: "Android • Financial Tracker", year: "2024", description: "Pencatatan cashflow dengan desain clean & modern, visualisasi data, dashboard." },
+    { type: "software", title: "Dompet Digital Ecosystem", category: "Fintech • API Integration", year: "2024", description: "Integrasi rekening bank, e-wallet & payment gateway (Midtrans/Xendit)." },
+    { type: "software", title: "Smart Finance Products", category: "Digital Products", year: "2024", description: "Dompet Rapi, Smart Sheet Keuangan (Harian/Mingguan/Bulanan) untuk Excel & Google Sheets." },
+    { type: "software", title: "Java Swing Inventory", category: "Desktop App • MySQL", year: "2023", description: "Sistem pengelolaan stok barang dengan CRUD, JTable, search, database integration." },
   ],
   creative: [
-    { title: "Photography Portfolio", category: "Urban • Night Ride • Automotive", year: "2024", description: "Coffee shop aesthetic, night ride, car meet, dan human interest photography." },
-    { title: "Automotive Visual Concepts", category: "Cinematic • Car Meet", year: "2024", description: "Night ride, Shell meetup, custom motorcycle visualization, engine swap concepts." },
-    { title: "Bandung Dystopia Novel", category: "Creative Writing • 200 chapters", year: "2024", description: "Cerita berlatar Gedung Sate. Menunjukkan ketahanan mental & storytelling." },
+    { type: "creative", title: "Photography Portfolio", category: "Urban • Night Ride • Automotive", year: "2024", description: "Coffee shop aesthetic, night ride, car meet, dan human interest photography." },
+    { type: "creative", title: "Automotive Visual Concepts", category: "Cinematic • Car Meet", year: "2024", description: "Night ride, Shell meetup, custom motorcycle visualization, engine swap concepts." },
+    { type: "creative", title: "Bandung Dystopia Novel", category: "Creative Writing • 200 chapters", year: "2024", description: "Cerita berlatar Gedung Sate. Menunjukkan ketahanan mental & storytelling." },
   ],
   academic: [
-    { title: "Cloud Computing Research", category: "Academic Paper", year: "2024", description: "Perbandingan dan Implementasi Infrastruktur On-Premises, Cloud, dan Hybrid." },
-    { title: "Loyal Customer Classification", category: "ML • Altair AI Studio", year: "2023", description: "Analisis dataset Amazon Sale Report untuk memprediksi loyalitas pelanggan." },
-    { title: "Digital Ticketing System", category: "System Analysis", year: "2023", description: "Perancangan sistem pemesanan tiket bioskop digital (APS)." },
+    { type: "academic", title: "Cloud Computing Research", category: "Academic Paper", year: "2024", description: "Perbandingan dan Implementasi Infrastruktur On-Premises, Cloud, dan Hybrid." },
+    { type: "academic", title: "Loyal Customer Classification", category: "ML • Altair AI Studio", year: "2023", description: "Analisis dataset Amazon Sale Report untuk memprediksi loyalitas pelanggan." },
+    { type: "academic", title: "Digital Ticketing System", category: "System Analysis", year: "2023", description: "Perancangan sistem pemesanan tiket bioskop digital (APS)." },
   ],
 };
 
@@ -93,7 +93,6 @@ export default function PortfolioGrid() {
                     {project.type === 'software' && '{ }'}
                     {project.type === 'creative' && '✨'}
                     {project.type === 'academic' && '📖'}
-                    {activeCategory === 'all' && '◆'}
                   </span>
                 </div>
               </div>
