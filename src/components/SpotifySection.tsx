@@ -1,9 +1,11 @@
+'use client';
+
 export default function SpotifySection() {
+  // Using a verified public playlist ID
+  const playlistId = '37i9dQZF1DXcBWIGoYBM5M'; 
+
   return (
-    <section
-      id="music"
-      className="max-w-6xl mx-auto px-8 py-20"
-    >
+    <div className="max-w-6xl mx-auto px-8 py-20">
       <div className="mb-12">
         <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-3">
           Current Playlist
@@ -21,7 +23,7 @@ export default function SpotifySection() {
           <iframe
             data-testid="embed-iframe"
             style={{ borderRadius: '12px' }}
-            src="https://open.spotify.com/embed/playlist/2KEFUQb2SGRQHycm9VQuJ4?utm_source=generator&theme=0"
+            src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator&theme=0`}
             width="100%"
             height="352"
             frameBorder="0"
@@ -30,7 +32,13 @@ export default function SpotifySection() {
             loading="lazy"
           />
         </div>
+        
+        <div className="mt-6 text-center">
+          <p className="text-xs text-white/40 font-mono tracking-widest">
+            🎧 Late night coding session • Bandung 2AM vibe
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }

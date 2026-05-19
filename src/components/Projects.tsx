@@ -1,45 +1,21 @@
-import { PROJECTS } from '@/data/projects'
+import { projects } from '@/data/projects'
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="max-w-6xl mx-auto px-8 py-20"
-    >
-      <div className="mb-12">
-        <p className="text-violet-400 uppercase tracking-[0.3em] text-sm mb-3">
-          Featured Projects
-        </p>
+    <div>
+      <h2 className="mb-10 text-4xl font-bold">Projects</h2>
 
-        <h3 className="text-4xl font-black">
-          Andika's Creative Ecosystem
-        </h3>
-
-        <blockquote className="mt-8 border-l-2 border-violet-500/50 pl-6 text-zinc-400 text-lg max-w-3xl leading-relaxed italic">
-          "Banyak orang bisa menulis kode. Banyak orang bisa meracik kopi. Namun, sangat sedikit orang yang bisa membangun sebuah brand kopi, mendesain UI aplikasinya, menghitung HPP bisnisnya, mengintegrasikan API finansialnya, lalu men-deploy seluruh ekosistem tersebut sendirian di jam 2 pagi."
-          <br /><br />
-          <span className="font-bold text-violet-400 not-italic">
-            I build things that work in the real world.
-          </span>
-        </blockquote>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-6">
-        {PROJECTS.map((project) => (
+      <div className="grid gap-6 md:grid-cols-2">
+        {projects.map((project) => (
           <div
             key={project.title}
-            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl hover:border-violet-400/30 transition"
+            className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
           >
-            <h4 className="text-2xl font-bold mb-4">
-              {project.title}
-            </h4>
-
-            <p className="text-zinc-400 leading-relaxed">
-              {project.description}
-            </p>
+            <h3 className="text-2xl font-semibold">{project.title}</h3>
+            <p className="mt-4 text-zinc-400">{project.description}</p>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   )
 }

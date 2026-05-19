@@ -1,8 +1,13 @@
 import './globals.css'
 
+import CursorGlow from '@/components/ui/CursorGlow'
+import RainOverlay from '@/components/ui/RainOverlay'
+import BootLoader from '@/components/ui/BootLoader'
+import AmbientPlayer from '@/components/player/AmbientPlayer'
+
 export const metadata = {
   title: 'NOCTRA',
-  description: 'Cinematic Portfolio',
+  description: 'Midnight Digital Experience',
 }
 
 export default function RootLayout({
@@ -12,7 +17,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-black text-white">
+
+        <BootLoader />
+
+        <CursorGlow />
+
+        <RainOverlay />
+
+        <AmbientPlayer />
+
+        {children}
+
+      </body>
     </html>
   )
 }

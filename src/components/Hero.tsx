@@ -1,78 +1,71 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowRight, Music2 } from 'lucide-react'
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
+  const [displayText, setDisplayText] = useState('');
+  const fullText = "Banyak orang bisa menulis kode. Banyak orang bisa meracik kopi. Namun, sangat sedikit orang yang bisa membangun brand, mendesain UI, menghitung HPP, mengintegrasikan API, lalu mendeploy seluruh ekosistem sendirian di jam 2 pagi.";
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    let i = 0;
+    const typing = setInterval(() => {
+      if (i < fullText.length) {
+        setDisplayText(fullText.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typing);
+        setIsTyping(false);
+      }
+    }, 30);
+    return () => clearInterval(typing);
+  }, []);
+
   return (
-    <section className="relative z-10 max-w-7xl mx-auto px-8 py-32 grid lg:grid-cols-2 gap-20 items-center">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-      >
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-8 text-sm text-zinc-300">
-          <Music2 size={16} className="text-violet-400" />
-          currently coding with rainy playlists & iced coffee
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black/90 pointer-events-none" />
+      
+      <div className="relative z-10 text-center max-w-4xl mx-auto animate-fade-in">
+        {/* Badge */}
+        <div className="inline-block mb-6 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-white/50">
+          ✦ PORTFOLIO 2024 ✦
         </div>
-
-        <p className="uppercase tracking-[0.4em] text-xs text-violet-400 mb-5">
-          Front-End Developer • Photographer • Barista
+        
+        <h1 className="text-7xl md:text-8xl lg:text-9xl font-mono font-bold tracking-tighter mb-6 bg-gradient-to-br from-white via-white to-white/30 bg-clip-text text-transparent drop-shadow-sm">
+          NOCTRA
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-zinc-300 font-light mb-6 tracking-wide">
+          Andika • Front-End Developer
         </p>
-
-        <h2 className="text-6xl md:text-7xl font-black leading-tight">
-          Crafting
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
-            digital atmosphere
-          </span>
-        </h2>
-
-        <p className="mt-8 text-zinc-400 text-lg max-w-xl leading-relaxed">
-          Frontend developer from Bandung blending code, coffee culture,
-          photography, and immersive UI experiences.
-        </p>
-
-        <div className="flex gap-4 mt-10 flex-wrap">
-          <a 
-            href="#projects" 
-            className="px-6 py-3 rounded-2xl bg-white text-black font-semibold flex items-center gap-2 hover:shadow-lg transition"
-          >
-            Explore Projects
-            <ArrowRight size={18} />
-          </a>
-
-          <a
-            href="https://github.com/atriadha99"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
-          >
-            Open GitHub
-          </a>
+        
+        {/* Typing effect quote */}
+        <div className="max-w-2xl mx-auto mt-8">
+          <p className="text-base text-white/40 italic leading-relaxed min-h-[120px]">
+            {displayText}
+            {isTyping && <span className="inline-block w-[2px] h-4 bg-white/40 ml-1 animate-pulse" />}
+          </p>
         </div>
-      </motion.div>
-
-      <div className="relative flex justify-center">
-        <div className="absolute w-72 h-72 bg-violet-500/20 blur-3xl rounded-full" />
-
-        <div className="relative w-[360px] rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-2xl p-6 overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-cyan-500/10" />
-
-          <div className="relative z-10">
-            <div className="flex justify-between mb-6">
-              <div>
-                <p className="text-sm text-zinc-500">Now Playing</p>
-                <h3 className="font-bold text-xl">After Rain Drive</h3>
-              </div>
-
-              <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
-            </div>
-
-            <div className="relative flex items-center justify-center py-8">
-              <div className="w-56 h-56 rounded-full bg-gradient-to-br from-zinc-800 to-black border border-white/10 animate-spin [animation-duration:8s] flex items-center justify-center shadow-2xl">
-                <div className="w-24 h-24 rounded-full bg-zinc-900 border border-white/10" />
-              </div>
-            </div>
+        
+        {/* Developer signature & Roles */}
+        <div className="mt-12 space-y-3">
+          <div className="flex justify-center gap-2 text-xs text-white/30 font-mono">
+            <span className="px-3 py-1 rounded-full bg-white/5">Front-End Developer</span>
+            <span className="px-3 py-1 rounded-full bg-white/5">Photographer</span>
+            <span className="px-3 py-1 rounded-full bg-white/5">Barista</span>
+            <span className="px-3 py-1 rounded-full bg-white/5">Brand Creator</span>
+          </div>
+          
+          <p className="text-sm text-white/40 mt-6">
+            currently coding with rainy playlists & iced coffee
+          </p>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 rounded-full border border-white/20 flex justify-center">
+            <div className="w-1 h-2 bg-white/40 rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </div>
