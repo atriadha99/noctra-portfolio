@@ -20,17 +20,17 @@ export default function SpotifySection() {
         <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-cyan-500/10" />
 
         <div className="relative z-10 overflow-hidden rounded-2xl">
-          <iframe
-            data-testid="embed-iframe"
-            style={{ borderRadius: '12px' }}
-            src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator&theme=0`}
-            width="100%"
-            height="352"
-            frameBorder="0"
-            allowFullScreen
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          />
+          <iframe 
+          data-testid="embed-iframe" 
+          style="border-radius:12px" 
+          src="https://open.spotify.com/embed/playlist/2KEFUQb2SGRQHycm9VQuJ4?utm_source=generator&theme=0" 
+          width="100%" 
+          height="352" 
+          frameBorder="0" 
+          allowfullscreen="" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          loading="lazy">
+          </iframe>
         </div>
         
         <div className="mt-6 text-center">
