@@ -28,14 +28,32 @@ export default function Vision() {
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{'</>'}</div>
               <h3 className="text-xl font-mono mb-3">Code & Creativity</h3>
               <p className="text-base text-white/50 leading-relaxed max-w-2xl mx-auto">
-                Saya membangun hal-hal yang benar-benar berfungsi di dunia nyata. 
-                Dari kode hingga kreativitas, dari kopi hingga kafein di jam 2 pagi — 
-                itulah NOCTRA.
+                Saya adalah Front-End Developer yang memiliki pengalaman di industri kopi dan fotografi. Kombinasi unik tersebut membantu saya memahami bagaimana desain, pengalaman pelanggan, dan teknologi dapat bekerja bersama untuk membangun produk digital yang lebih manusiawi.
               </p>
             </div>
           </div>
         </div>
         
+        {/* Statistics / Numbers */}
+        <div className="mt-16 pt-16 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <h4 className="text-4xl font-mono font-bold text-white mb-2">20+</h4>
+            <p className="text-xs text-white/50 uppercase tracking-widest">Personal Projects</p>
+          </div>
+          <div>
+            <h4 className="text-4xl font-mono font-bold text-white mb-2">3+</h4>
+            <p className="text-xs text-white/50 uppercase tracking-widest">Years Experience</p>
+          </div>
+          <div>
+            <h4 className="text-4xl font-mono font-bold text-white mb-2">100%</h4>
+            <p className="text-xs text-white/50 uppercase tracking-widest">Coffee Fueled</p>
+          </div>
+          <div>
+            <h4 className="text-4xl font-mono font-bold text-white mb-2">∞</h4>
+            <p className="text-xs text-white/50 uppercase tracking-widest">Lines of Code</p>
+          </div>
+        </div>
+
         <div className="mt-16 pt-8 border-t border-white/10">
           <p className="text-lg font-mono text-white/40">
             "I build things that work in the real world."

@@ -7,6 +7,14 @@ export default function CurrentlyBuilding() {
         <p>• Noctra Interactive Experience</p>
         <p>• Temu Sua Coffee Ecosystem</p>
         <p>• Rainy Midnight UI System</p>
+        <p>• Sabda Alam Redesign</p>
+        <p>
+          • Dashboard KP -{' '}
+          <a href="https://ptabb.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4 transition">
+            https://ptabb.vercel.app/
+          </a>
+        </p>
+        <p>• Sistem Gudang Yare! Cafe</p>
       </div>
     </div>
   )

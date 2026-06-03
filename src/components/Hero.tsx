@@ -60,6 +60,19 @@ export default function Hero() {
           <p className="text-sm text-white/40 mt-6">
             currently coding with rainy playlists & iced coffee
           </p>
+          
+          {/* Download CV Button */}
+          <div className="mt-8 flex justify-center">
+            <a 
+              href="/cv.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white border border-white/20 hover:border-white rounded-full text-white hover:text-black font-mono text-sm transition-all duration-300"
+            >
+              <span>Download CV</span>
+              <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            </a>
+          </div>
         </div>
         
         {/* Scroll indicator */}

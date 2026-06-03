@@ -61,6 +61,18 @@ export default function Services() {
             </div>
           ))}
         </div>
+        
+        {/* Tech Stack Grid */}
+        <div className="mt-24 text-center">
+          <h3 className="text-xl font-mono mb-8 text-white/50">Tech Stack & Tools</h3>
+          <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            {["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Neon", "Supabase", "Git", "Figma"].map((tech) => (
+              <div key={tech} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-mono text-white/70 hover:bg-white/10 hover:text-white hover:border-white/30 transition-all cursor-default">
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
