@@ -3,7 +3,6 @@ import { Github, Instagram, Mail } from 'lucide-react'
 export default function Footer() {
   return (
     <footer
-      id="contact"
       className="relative z-10 border-t border-white/10 px-8 py-14 text-center"
     >
       <h4 className="text-3xl font-black mb-4">
