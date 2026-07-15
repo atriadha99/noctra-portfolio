@@ -15,6 +15,7 @@ export default function CurrentlyBuilding() {
           </a>
         </p>
         <p>• Sistem Gudang Yare! Cafe</p>
+        <p>• Naloka Website</p>
       </div>
     </div>
   )
