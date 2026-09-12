@@ -306,4 +306,3 @@ export default function PortfolioSection() {
     </section>
   );
 }
-npm install framer-motion
