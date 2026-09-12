@@ -1,87 +1,45 @@
-import Navbar from '@/components/Navbar'
-import Skyline from '@/components/skyline/Skyline'
-import Hero from '@/components/Hero'
-import NoctraTerminal from '@/components/terminal/NoctraTerminal'
-import CurrentlyBuilding from '@/components/noctra/CurrentlyBuilding'
-import PortfolioGrid from '@/components/PortfolioGrid'
-import GithubActivity from '@/components/noctra/GithubActivity'
-import Gallery from '@/components/photography/Gallery'
-import FadeUp from '@/components/ui/FadeUp'
-import Particles from '@/components/ui/Particles'
-import SmoothScroll from '@/components/ui/SmoothScroll'
-import SpotifySection from '@/components/SpotifySection'
-import Services from '@/components/Services'
-import Vision from '@/components/Vision'
-import ContactForm from '@/components/ContactForm'
-import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import SelectedWork from '@/components/SelectedWork';
+import Capabilities from '@/components/Capabilities';
+import Experience from '@/components/Experience';
+import StudioMusic from '@/components/StudioMusic';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white antialiased selection:bg-white selection:text-black">
-      <SmoothScroll />
-      <Skyline />
-      <Particles />
+    <div className="relative min-h-screen bg-[#09090b] text-[#f4f4f5] antialiased bg-grid-pattern selection:bg-blue-500/30 selection:text-white">
+      {/* Top Sticky Minimalist Navbar */}
       <Navbar />
 
-      <div className="relative z-10">
+      {/* Main Content Sections */}
+      <main className="relative z-10 overflow-hidden">
+        {/* Editorial Hero */}
         <Hero />
 
-        <section id="services" className="container mx-auto px-6 py-24">
-          <FadeUp>
-            <Services />
-          </FadeUp>
-        </section>
+        {/* About / "BUILDING WITH PURPOSE" */}
+        <About />
 
-        <section id="terminal" className="container mx-auto max-w-5xl px-6 py-24">
-          <FadeUp>
-            <NoctraTerminal />
-          </FadeUp>
-        </section>
+        {/* Selected Work (Centerpiece with 7 Featured Projects & Case Studies) */}
+        <SelectedWork />
 
-        <section id="building" className="container mx-auto max-w-5xl px-6 py-16">
-          <FadeUp>
-            <CurrentlyBuilding />
-          </FadeUp>
-        </section>
+        {/* Capabilities (01 Front-End, 02 Backend, 03 Mobile, 04 Tools) */}
+        <Capabilities />
 
-        <section id="portfolio" className="container mx-auto px-6 py-24">
-          <FadeUp>
-            <PortfolioGrid />
-          </FadeUp>
-        </section>
+        {/* Experience Timeline (Dual-track Engineering & F&B Operations Discipline) */}
+        <Experience />
 
-        <section id="vision" className="container mx-auto px-6 py-32">
-          <FadeUp>
-            <Vision />
-          </FadeUp>
-        </section>
+        {/* Studio Soundscape ("What keeps me coding at 2AM") */}
+        <StudioMusic />
 
-        <section id="music" className="container mx-auto px-6 py-16">
-          <FadeUp>
-            <SpotifySection />
-          </FadeUp>
-        </section>
+        {/* Contact Section ("LET'S BUILD SOMETHING") */}
+        <ContactSection />
+      </main>
 
-        <section id="github" className="container mx-auto max-w-5xl px-6 py-16">
-          <FadeUp>
-            <GithubActivity />
-          </FadeUp>
-        </section>
-
-        <section id="photography" className="container mx-auto px-6 py-24">
-          <FadeUp>
-            <Gallery />
-          </FadeUp>
-        </section>
-
-        <section id="contact" className="container mx-auto px-6 py-24">
-          <FadeUp>
-            <ContactForm />
-          </FadeUp>
-        </section>
-      </div>
-      
+      {/* Minimal Studio Footer */}
       <Footer />
-    </main>
-  )
+    </div>
+  );
 }

@@ -1,87 +1,140 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import LiveClock from './ui/LiveClock';
 
 export default function Hero() {
-  const [displayText, setDisplayText] = useState('');
-  const fullText = "Banyak orang bisa menulis kode. Banyak orang bisa meracik kopi. Namun, sangat sedikit orang yang bisa membangun brand, mendesain UI, menghitung HPP, mengintegrasikan API, lalu mendeploy seluruh ekosistem sendirian di jam 2 pagi.";
-  const [isTyping, setIsTyping] = useState(true);
-
-  useEffect(() => {
-    let i = 0;
-    const typing = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayText(fullText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typing);
-        setIsTyping(false);
-      }
-    }, 30);
-    return () => clearInterval(typing);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black/90 pointer-events-none" />
-      
-      <div className="relative z-10 text-center max-w-4xl mx-auto animate-fade-in">
-        {/* Badge */}
-        <div className="inline-block mb-6 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-white/50">
-          ✦ PORTFOLIO 2024 ✦
+    <section className="relative min-h-[92vh] flex flex-col justify-between pt-32 md:pt-44 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+      {/* Top Editorial Index / Metadata Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-6 text-xs font-mono tracking-widest text-zinc-400"
+      >
+        <div className="flex items-center gap-6">
+          <span className="text-white font-semibold">NOCTRA STUDIO</span>
+          <span className="text-zinc-600 hidden sm:inline">|</span>
+          <span className="hidden sm:inline">DISCIPLINE × CODE × CRAFT</span>
         </div>
-        
-        <h1 className="text-7xl md:text-8xl lg:text-9xl font-mono font-bold tracking-tighter mb-6 bg-gradient-to-br from-white via-white to-white/30 bg-clip-text text-transparent drop-shadow-sm">
-          NOCTRA
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-zinc-300 font-light mb-6 tracking-wide">
-          Andika • Front-End Developer
-        </p>
-        
-        {/* Typing effect quote */}
-        <div className="max-w-2xl mx-auto mt-8">
-          <p className="text-base text-white/40 italic leading-relaxed min-h-[120px]">
-            {displayText}
-            {isTyping && <span className="inline-block w-[2px] h-4 bg-white/40 ml-1 animate-pulse" />}
-          </p>
+        <div className="flex items-center gap-4">
+          <LiveClock />
         </div>
-        
-        {/* Developer signature & Roles */}
-        <div className="mt-12 space-y-3">
-          <div className="flex justify-center gap-2 text-xs text-white/30 font-mono">
-            <span className="px-3 py-1 rounded-full bg-white/5">Front-End Developer</span>
-            <span className="px-3 py-1 rounded-full bg-white/5">Photographer</span>
-            <span className="px-3 py-1 rounded-full bg-white/5">Barista</span>
-            <span className="px-3 py-1 rounded-full bg-white/5">Brand Creator</span>
+      </motion.div>
+
+      {/* Main Asymmetric Typographic Statement */}
+      <div className="my-auto py-12 md:py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="space-y-4"
+        >
+          {/* Subtitle Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-xs font-mono text-blue-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+            INFORMATICS ENGINEERING & PRODUCT ENGINEERING
           </div>
-          
-          <p className="text-sm text-white/40 mt-6">
-            currently coding with rainy playlists & iced coffee
-          </p>
-          
-          {/* Download CV Button */}
-          <div className="mt-8 flex justify-center">
-            <a 
-              href="/cv.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white border border-white/20 hover:border-white rounded-full text-white hover:text-black font-mono text-sm transition-all duration-300"
-            >
-              <span>Download CV</span>
-              <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-            </a>
+
+          {/* Large Name Display */}
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-white leading-[0.92]">
+            ANDIKA AGUNG
+            <br />
+            <span className="text-zinc-400">TRIADHA</span>
+          </h1>
+
+          {/* Role Headline */}
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-zinc-300 pt-2">
+            FRONT-END DEVELOPER{' '}
+            <span className="text-zinc-500">&amp;</span> DIGITAL PRODUCT BUILDER
+          </h2>
+        </motion.div>
+
+        {/* Editorial Supporting Description & Asymmetric Columns */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-12 md:mt-16 pt-8 border-t border-white/[0.08]"
+        >
+          {/* Statement Column */}
+          <div className="lg:col-span-7">
+            <p className="text-lg md:text-xl lg:text-2xl font-normal leading-relaxed text-zinc-300">
+              I build thoughtful web and mobile experiences with modern technologies, from interface to deployment.
+            </p>
+            <p className="text-sm md:text-base text-zinc-400 mt-4 leading-relaxed max-w-xl">
+              Grounded in rigorous software engineering and refined by 6+ years of specialty F&amp;B operational discipline — bridging technical precision, customer psychology, and tactile digital interfaces.
+            </p>
           </div>
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 rounded-full border border-white/20 flex justify-center">
-            <div className="w-1 h-2 bg-white/40 rounded-full mt-2 animate-pulse" />
+
+          {/* Meta Information Column */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6 lg:border-l lg:border-white/[0.08] lg:pl-10 font-mono text-xs text-zinc-400">
+            <div className="space-y-3">
+              <div>
+                <span className="text-zinc-500 block text-[10px] tracking-[0.2em] uppercase">BASE OF OPERATIONS</span>
+                <span className="text-white text-sm">Bandung, West Java, Indonesia</span>
+              </div>
+              <div>
+                <span className="text-zinc-500 block text-[10px] tracking-[0.2em] uppercase">CORE FOCUS</span>
+                <span className="text-zinc-200">Web Architecture · Mobile Systems · Studio UX</span>
+              </div>
+            </div>
+
+            {/* Quick Channel Links */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="https://github.com/atriadha99"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:border-white/30 transition-colors"
+              >
+                <Github className="w-3.5 h-3.5" />
+                <span>GITHUB</span>
+                <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/andika-triadha-844976294/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:border-white/30 transition-colors"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                <span>LINKEDIN</span>
+                <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+              </a>
+
+              <a
+                href="mailto:atriadha.dev@gmail.com"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-zinc-300 hover:text-white hover:border-white/30 transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>EMAIL</span>
+                <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+              </a>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
+
+      {/* Bottom Scroll / Jump Bar */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="flex items-center justify-between pt-6 border-t border-white/[0.08] text-xs font-mono tracking-widest text-zinc-400"
+      >
+        <span className="hidden sm:inline text-zinc-400">PORTFOLIO INDEX / 2026 EDITION</span>
+        <a
+          href="#work"
+          className="group inline-flex items-center gap-2 text-white hover:text-blue-400 transition-colors"
+        >
+          <span>VIEW SELECTED WORK</span>
+          <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+        </a>
+      </motion.div>
     </section>
-  )
+  );
 }
