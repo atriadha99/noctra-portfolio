@@ -17,6 +17,7 @@ tsconfig.tsbuildinfo
 # Environment variables
 .env
 .env.local
+.env.production
 .env.*.local
 
 # IDE
@@ -39,3 +40,4 @@ yarn-error.log*
 
 # Turbopack
 .turbo/
+.vercel
