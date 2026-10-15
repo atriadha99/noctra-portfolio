@@ -1,7 +1,9 @@
+import path from 'node:path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // Next 15+ may require experimental or it's top-level. I'll put it top level.
+  turbopack: {
+    root: path.resolve('.'),
   },
   allowedDevOrigins: ['192.168.56.1', 'localhost', '*.localhost'],
 };

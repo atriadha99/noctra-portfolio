@@ -3,73 +3,116 @@
 @theme {
   --font-display: var(--font-display), "Space Grotesk", system-ui, sans-serif;
   --font-sans: var(--font-sans), "Plus Jakarta Sans", system-ui, sans-serif;
-  --color-studio-bg: #09090b;
-  --color-studio-surface: #111115;
-  --color-studio-border: rgba(255, 255, 255, 0.08);
+  --color-netflix-red: #E50914;
+  --color-netflix-black: #141414;
+  --color-netflix-card: #181818;
+  --color-netflix-green: #46d369;
+  --color-studio-bg: #141414;
+  --color-studio-surface: #181818;
+  --color-studio-border: rgba(255, 255, 255, 0.12);
   --color-noctra-blue: #3b82f6;
   --color-noctra-cyan: #38bdf8;
 }
 
 @layer base {
   :root {
-    --bg-primary: #09090b;
-    --text-primary: #f4f4f5;
-    --text-muted: #a1a1aa;
-    --border-subtle: rgba(255, 255, 255, 0.08);
+    --bg-primary: #141414;
+    --text-primary: #ffffff;
+    --text-muted: #aaaaaa;
+    --border-subtle: rgba(255, 255, 255, 0.12);
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #09090b;
-    color: #f4f4f5;
+    background-color: #141414;
+    color: #ffffff;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: #09090b;
-    color: #f4f4f5;
+    background-color: #141414;
+    color: #ffffff;
     font-family: var(--font-sans), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display), "Space Grotesk", system-ui, sans-serif;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
   }
 }
 
-/* Studio Selection */
+/* Netflix Selection */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: #E50914;
   color: #ffffff;
 }
 
 /* Minimal Studio Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #141414;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.28);
+  background: #E50914;
 }
 
-/* Subtle grid noise background overlay */
-.bg-grid-pattern {
-  background-size: 60px 60px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+/* Hide scrollbar for carousel lanes */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+}
+
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Top 10 Outlined Giant Numbers like Netflix */
+.netflix-top10-number {
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-size: 13rem;
+  line-height: 0.8;
+  font-weight: 900;
+  color: #141414;
+  -webkit-text-stroke: 4px #595959;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  user-select: none;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Accessible Focus States */
+:focus-visible {
+  outline: 2px solid #E50914;
+  outline-offset: 2px;
 }
 
 /* Respect Reduced Motion */

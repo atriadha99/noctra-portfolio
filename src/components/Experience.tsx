@@ -9,15 +9,15 @@ export default function Experience() {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6">
         <div>
-          <div className="flex items-center gap-3 text-xs font-mono tracking-[0.25em] text-blue-400 mb-3 uppercase">
-            <span>04 // TIMELINE &amp; TRAJECTORY</span>
+          <div className="flex items-center gap-3 text-xs font-mono tracking-[0.25em] text-[#E50914] mb-3 uppercase font-bold">
+            <span>DOKUMENTASI REKAM JEJAK &amp; PENGALAMAN</span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
-            EXPERIENCE
+            PENGALAMAN
           </h2>
         </div>
         <p className="text-sm md:text-base text-zinc-400 max-w-md font-light">
-          A dual-track career forged in modern software engineering and sharpened by six years of high-volume specialty F&amp;B operational discipline.
+          Karier ganda yang ditempa dalam rekayasa perangkat lunak modern dan dipertajam oleh enam tahun disiplin operasional F&amp;B specialty volume tinggi.
         </p>
       </div>
 
@@ -25,20 +25,20 @@ export default function Experience() {
         {/* Experience Timeline Column */}
         <div className="lg:col-span-8 space-y-8">
           <p className="text-xs font-mono tracking-widest text-zinc-500 uppercase pb-2 border-b border-white/[0.08]">
-            CHRONOLOGICAL TIMELINE // 2018 — 2026
+            TIMELINE KRONOLOGIS // 2018 — 2026
           </p>
 
           <div className="space-y-12">
             {experiences.map((item, idx) => (
               <div
                 key={idx}
-                className="group relative border-l border-white/[0.1] pl-6 sm:pl-8 space-y-3 transition-colors hover:border-blue-400"
+                className="group relative border-l border-white/[0.1] pl-6 sm:pl-8 space-y-3 transition-colors hover:border-[#E50914]"
               >
                 {/* Timeline Dot */}
-                <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-blue-400 transition-colors" />
+                <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-[#E50914] transition-colors" />
 
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="font-mono text-xs text-blue-400 font-bold">
+                  <span className="font-mono text-xs text-[#E50914] font-bold">
                     {item.period}
                   </span>
                   <div className="flex items-center gap-2 text-xs font-mono text-zinc-500">

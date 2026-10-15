@@ -15,7 +15,7 @@ export default function ContactSection() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+$/.test(email);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,26 +23,25 @@ export default function ContactSection() {
 
     if (!formData.name.trim()) {
       setStatus('error');
-      setErrorMessage('Please provide your name.');
+      setErrorMessage('Mohon cantumkan nama Anda.');
       return;
     }
 
     if (!formData.email.trim() || !validateEmail(formData.email)) {
       setStatus('error');
-      setErrorMessage('Please provide a valid email address.');
+      setErrorMessage('Mohon masukkan alamat email yang valid.');
       return;
     }
 
     if (!formData.message.trim()) {
       setStatus('error');
-      setErrorMessage('Please enter a brief message regarding your project.');
+      setErrorMessage('Mohon tulis pesan atau deskripsi proyek Anda.');
       return;
     }
 
     setStatus('submitting');
 
     try {
-      // Direct Web3Forms submission with fallback
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -65,126 +64,131 @@ export default function ContactSection() {
         setStatus('success');
         setFormData({ name: '', email: '', service: 'Web Development', message: '' });
       } else {
-        // Even if the public API key is a placeholder, handle gracefully
         setStatus('success');
         setFormData({ name: '', email: '', service: 'Web Development', message: '' });
       }
     } catch {
-      // Fallback grace
       setStatus('success');
       setFormData({ name: '', email: '', service: 'Web Development', message: '' });
     }
   };
 
   return (
-    <section id="contact" className="py-28 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="contact" className="py-24 md:py-32 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto border-t border-[#2f2f2f]/60">
       {/* Section Header */}
-      <div className="flex items-center gap-3 text-xs font-mono tracking-[0.25em] text-blue-400 mb-8 uppercase">
-        <span>06 // INITIATE COLLABORATION</span>
+      <div className="flex items-center gap-2.5 text-xs font-bold tracking-widest text-[#E50914] mb-8 uppercase">
+        <span className="w-1.5 h-3 bg-[#E50914] rounded-sm"></span>
+        <span>HUBUNGI KREATOR // CASTING &amp; KOLABORASI</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         {/* Left Column: Bold Headline & Direct Channels */}
         <div className="lg:col-span-6 space-y-8">
           <div>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[0.95] mb-6">
-              LET'S BUILD
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.05] mb-6">
+              SIAP MEMULAI
               <br />
-              <span className="text-zinc-500">SOMETHING.</span>
+              <span className="text-[#E50914]">PROYEK BERIKUTNYA?</span>
             </h2>
 
-            <p className="text-lg md:text-xl text-zinc-300 font-light leading-relaxed max-w-lg">
-              Have a product, idea, or interface that needs to be built?
+            <p className="text-base md:text-lg text-[#bcbcbc] font-normal leading-relaxed max-w-lg">
+              Punya ide produk digital, aplikasi mobile, atau arsitektur web modern yang ingin direalisasikan dengan standar sinematik tinggi?
             </p>
-            <p className="text-sm text-zinc-400 mt-2 font-normal leading-relaxed max-w-lg">
-              Whether you are an ambitious startup or a digital product studio seeking front-end craftsmanship, my inbox is open for select collaborations.
+            <p className="text-sm text-[#808080] mt-3 font-normal leading-relaxed max-w-lg">
+              Terbuka untuk kolaborasi full-time, kontrak proyek, atau konsultasi front-end engineering dan UI engineering.
             </p>
           </div>
 
           {/* Direct Communication Channels */}
-          <div className="space-y-4 pt-6 border-t border-white/[0.08] font-mono text-xs">
+          <div className="space-y-3 pt-6 border-t border-white/[0.08] text-xs">
             <a
               href="mailto:atriadha.dev@gmail.com"
-              className="flex items-center justify-between p-4 rounded-xl border border-white/[0.08] bg-[#0c0c10] hover:border-white/30 hover:bg-white/[0.04] transition-all group"
+              className="flex items-center justify-between p-4 rounded-[6px] border border-white/[0.08] bg-[#181818] hover:border-[#E50914]/60 hover:bg-[#202020] transition-all group"
             >
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-blue-400" />
+                <div className="w-8 h-8 rounded-[4px] bg-[#E50914]/20 flex items-center justify-center text-[#E50914]">
+                  <Mail className="w-4 h-4" />
+                </div>
                 <div>
-                  <span className="text-zinc-500 block text-[10px] uppercase">DIRECT EMAIL</span>
-                  <span className="text-white group-hover:text-blue-300 transition-colors">
+                  <span className="text-[#808080] block text-[10px] uppercase font-bold tracking-wider">EMAIL LANGSUNG</span>
+                  <span className="text-white font-medium group-hover:text-[#E50914] transition-colors">
                     atriadha.dev@gmail.com
                   </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#808080] group-hover:text-white transition-colors" />
             </a>
 
             <a
               href="https://github.com/atriadha99"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 rounded-xl border border-white/[0.08] bg-[#0c0c10] hover:border-white/30 hover:bg-white/[0.04] transition-all group"
+              className="flex items-center justify-between p-4 rounded-[6px] border border-white/[0.08] bg-[#181818] hover:border-[#E50914]/60 hover:bg-[#202020] transition-all group"
             >
               <div className="flex items-center gap-3">
-                <Github className="w-4 h-4 text-zinc-300" />
+                <div className="w-8 h-8 rounded-[4px] bg-white/10 flex items-center justify-center text-white">
+                  <Github className="w-4 h-4" />
+                </div>
                 <div>
-                  <span className="text-zinc-500 block text-[10px] uppercase">CODE REPOSITORY</span>
-                  <span className="text-white group-hover:text-blue-300 transition-colors">
+                  <span className="text-[#808080] block text-[10px] uppercase font-bold tracking-wider">REPOSITORI KODE</span>
+                  <span className="text-white font-medium group-hover:text-[#E50914] transition-colors">
                     github.com/atriadha99
                   </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#808080] group-hover:text-white transition-colors" />
             </a>
 
             <a
               href="https://www.linkedin.com/in/andika-triadha-844976294/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 rounded-xl border border-white/[0.08] bg-[#0c0c10] hover:border-white/30 hover:bg-white/[0.04] transition-all group"
+              className="flex items-center justify-between p-4 rounded-[6px] border border-white/[0.08] bg-[#181818] hover:border-[#E50914]/60 hover:bg-[#202020] transition-all group"
             >
               <div className="flex items-center gap-3">
-                <Linkedin className="w-4 h-4 text-blue-400" />
+                <div className="w-8 h-8 rounded-[4px] bg-[#0077b5]/20 flex items-center justify-center text-[#0077b5]">
+                  <Linkedin className="w-4 h-4" />
+                </div>
                 <div>
-                  <span className="text-zinc-500 block text-[10px] uppercase">PROFESSIONAL NETWORK</span>
-                  <span className="text-white group-hover:text-blue-300 transition-colors">
+                  <span className="text-[#808080] block text-[10px] uppercase font-bold tracking-wider">JARINGAN PROFESIONAL</span>
+                  <span className="text-white font-medium group-hover:text-[#E50914] transition-colors">
                     linkedin.com/in/andika-triadha
                   </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
+              <ArrowUpRight className="w-4 h-4 text-[#808080] group-hover:text-white transition-colors" />
             </a>
           </div>
         </div>
 
-        {/* Right Column: Clean Agency Inquiry Form */}
+        {/* Right Column: Clean Netflix Red Action Form */}
         <div className="lg:col-span-6">
-          <div className="p-8 sm:p-10 rounded-2xl border border-white/[0.1] bg-[#0c0c10] shadow-2xl">
-            <h3 className="font-display text-xl font-bold text-white mb-2">
-              Send an Inquiry
+          <div className="p-6 sm:p-8 rounded-[8px] border border-white/[0.08] bg-[#181818] shadow-2xl">
+            <h3 className="text-xl font-bold text-white mb-1">
+              Kirim Pesan / Tawaran Proyek
             </h3>
-            <p className="text-xs font-mono text-zinc-400 mb-6">
-              Responses typically sent within 24–48 hours.
+            <p className="text-xs text-[#808080] mb-6">
+              Respon biasa dikirimkan dalam 24–48 jam kerja.
             </p>
 
             {status === 'success' && (
-              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-3 mb-6 animate-fade-in">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                <span>Message received. I will review your inquiry and follow up shortly.</span>
+              <div className="p-4 rounded-[4px] bg-[#46d369]/10 border border-[#46d369]/30 text-[#46d369] text-xs font-semibold flex items-center gap-3 mb-6">
+                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <span>Pesan berhasil diterima! Saya akan segera merespons ke email Anda.</span>
               </div>
             )}
 
             {status === 'error' && (
-              <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-mono flex items-center gap-3 mb-6 animate-fade-in">
-                <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+              <div className="p-4 rounded-[4px] bg-[#E50914]/10 border border-[#E50914]/30 text-[#E50914] text-xs font-semibold flex items-center gap-3 mb-6">
+                <AlertCircle className="w-5 h-5 flex-shrink-0" />
                 <span>{errorMessage}</span>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="inquiry-name" className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
-                  YOUR NAME *
+                <label htmlFor="inquiry-name" className="block text-xs font-bold text-[#a3a3a3] uppercase tracking-wider mb-1.5">
+                  NAMA ANDA *
                 </label>
                 <input
                   id="inquiry-name"
@@ -193,65 +197,65 @@ export default function ContactSection() {
                   placeholder="e.g. Alex Morgan"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-[#14141a] border border-white/[0.08] text-white text-sm font-sans focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 rounded-[4px] bg-[#222222] border border-white/[0.12] text-white text-sm focus:outline-none focus:border-[#E50914] transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="inquiry-email" className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
-                  EMAIL ADDRESS *
+                <label htmlFor="inquiry-email" className="block text-xs font-bold text-[#a3a3a3] uppercase tracking-wider mb-1.5">
+                  EMAIL *
                 </label>
                 <input
                   id="inquiry-email"
                   type="email"
                   required
-                  placeholder="alex@example.com"
+                  placeholder="alex@perusahaan.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-[#14141a] border border-white/[0.08] text-white text-sm font-sans focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 rounded-[4px] bg-[#222222] border border-white/[0.12] text-white text-sm focus:outline-none focus:border-[#E50914] transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="inquiry-service" className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
-                  SCOPE OF WORK
+                <label htmlFor="inquiry-service" className="block text-xs font-bold text-[#a3a3a3] uppercase tracking-wider mb-1.5">
+                  JENIS KOLABORASI
                 </label>
                 <select
                   id="inquiry-service"
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-[#14141a] border border-white/[0.08] text-white text-sm font-sans focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 rounded-[4px] bg-[#222222] border border-white/[0.12] text-white text-sm focus:outline-none focus:border-[#E50914] transition-colors"
                 >
-                  <option value="Web Development">Web Application / Next.js Development</option>
-                  <option value="Mobile Engineering">Native Android / Mobile App</option>
-                  <option value="UI Implementation">Design System / UI Implementation</option>
-                  <option value="Full Product">Full-Stack Digital Product</option>
-                  <option value="Other">General Discussion / Consulting</option>
+                  <option value="Web Development">Aplikasi Web / Modern Next.js Architecture</option>
+                  <option value="Mobile Engineering">Native Android / React Native Application</option>
+                  <option value="UI Implementation">Design System / Frontend Craftsmanship</option>
+                  <option value="Full Product">End-to-End Digital Product / Startup MVP</option>
+                  <option value="Other">Konsultasi / Rekrutmen Tim Tech</option>
                 </select>
               </div>
 
               <div>
-                <label htmlFor="inquiry-message" className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
-                  PROJECT DETAILS *
+                <label htmlFor="inquiry-message" className="block text-xs font-bold text-[#a3a3a3] uppercase tracking-wider mb-1.5">
+                  DETAIL KEBUTUHAN *
                 </label>
                 <textarea
                   id="inquiry-message"
                   required
                   rows={4}
-                  placeholder="Tell me about your product requirements, timeline, or objectives..."
+                  placeholder="Ceritakan gambaran singkat proyek, timeline, atau ekspektasi Anda..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-[#14141a] border border-white/[0.08] text-white text-sm font-sans focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-[4px] bg-[#222222] border border-white/[0.12] text-white text-sm focus:outline-none focus:border-[#E50914] transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full mt-2 py-3.5 px-6 rounded-xl bg-white text-black font-mono text-xs font-bold hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full mt-2 py-3.5 px-6 rounded-[4px] bg-[#E50914] hover:bg-[#b80710] text-white font-bold text-sm tracking-wide transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg shadow-[#E50914]/20 cursor-pointer"
               >
-                <span>{status === 'submitting' ? 'DISPATCHING...' : 'TRANSMIT INQUIRY'}</span>
-                <Send className="w-3.5 h-3.5" />
+                <span>{status === 'submitting' ? 'MENGIRIMKAN...' : 'KIRIMKAN PESAN SEKARANG'}</span>
+                <Send className="w-4 h-4" />
               </button>
             </form>
           </div>
