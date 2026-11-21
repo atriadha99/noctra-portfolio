@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { projectsData } from '@/data/projects';
-import { useStreamingStore } from '@/store/streamingStore';
+import { useLanguageStore } from '@/store/languageStore';
 import ProjectCarouselRow from './ProjectCarouselRow';
 import Top10CarouselRow from './Top10CarouselRow';
 
 export default function StreamingRowsShowcase() {
-  const { bookmarkedIds } = useStreamingStore();
+  const { t } = useLanguageStore();
 
   // Top 10 Ranked Projects (Flagship Showcase)
   const top10Projects = [
@@ -21,6 +21,16 @@ export default function StreamingRowsShowcase() {
     'lendspace-hki',
     'noctra-velocitra',
     'yare-coffee',
+  ]
+    .map((id) => projectsData.find((p) => p.id === id))
+    .filter(Boolean) as typeof projectsData;
+
+  // Proyek Unggulan (4 Proyek Terkuat: KCD Wilayah VIII, PT ABB Dashboard, TemuCashflow, COMPawnion)
+  const featuredProjects = [
+    'kcd-wilayah-8',
+    'pt-abb-dashboard',
+    'temucashflow',
+    'compawnion',
   ]
     .map((id) => projectsData.find((p) => p.id === id))
     .filter(Boolean) as typeof projectsData;
@@ -52,71 +62,81 @@ export default function StreamingRowsShowcase() {
       p.streamingRows.includes('creative')
   );
 
-  // Daftar Saya (My List)
-  const bookmarkedProjects = projectsData.filter((p) => bookmarkedIds.includes(p.id));
-
   return (
     <section id="trending" className="relative z-20 space-y-6 md:space-y-10 pb-12 -mt-16 sm:-mt-24 md:-mt-32">
       {/* 1. Iconic Netflix "Top 10 di Indonesia Hari Ini" with Giant Outlined Numbers */}
       <Top10CarouselRow
         id="top-10"
-        title="10 Proyek Teratas di Indonesia Hari Ini"
+        title={t('10 Proyek Teratas di Indonesia Hari Ini', 'Top 10 Projects in Indonesia Today')}
         projects={top10Projects}
       />
 
-      {/* 2. Lanjutkan Menonton (Continue Watching) with Red Progress Bars */}
+      {/* 2. Proyek Unggulan (Top Flagship Showcase) */}
+      <ProjectCarouselRow
+        id="featured-row"
+        title={t('Proyek Unggulan', 'Featured Projects')}
+        badge={t('Pilihan Utama', 'Top Picks')}
+        subtitle={t(
+          'Arsitektur web produksi, enterprise dashboard, dan aplikasi native terverifikasi',
+          'Production web architecture, enterprise dashboard, and verified native apps'
+        )}
+        projects={featuredProjects}
+      />
+
+      {/* 3. Lanjutkan Menonton untuk Rekruter (Continue Watching) - 'Dalam Pengerjaan' removed per task 6 */}
       <ProjectCarouselRow
         id="continue-watching"
-        title="Lanjutkan Menonton untuk Rekruter"
-        badge="Dalam Pengerjaan"
-        subtitle="Sprint aktif dengan persentase progres penyelesaian"
+        title={t('Lanjutkan Menonton untuk Rekruter', 'Continue Watching for Recruiters')}
+        subtitle={t('Sprint aktif dengan persentase progres penyelesaian', 'Active sprints with completion progress tracking')}
         projects={continueWatchingProjects}
       />
 
-      {/* 3. Populer di Noctra (Trending Now) */}
+      {/* 4. Populer di Noctra (Trending Now) */}
       <ProjectCarouselRow
         id="popular-now"
-        title="Populer di Noctra"
+        title={t('Populer di Noctra', 'Trending on Noctra')}
         badge="Trending"
-        subtitle="Sistem arsitektur dengan rating kepuasan teknis tertinggi"
+        subtitle={t(
+          'Sistem arsitektur dengan rating kepuasan teknis tertinggi',
+          'Architectural systems with top technical affinity ratings'
+        )}
         projects={trendingProjects}
       />
 
-      {/* 4. Enterprise & Industrial Systems */}
+      {/* 5. Enterprise & Industrial Systems */}
       <ProjectCarouselRow
         id="enterprise-systems"
-        title="Sistem Enterprise & Arsitektur Industri"
+        title={t('Sistem Enterprise & Arsitektur Industri', 'Enterprise Systems & Industrial Tech')}
         badge="SCADA & GovTech"
-        subtitle="Dasbor operasional telemetri, SaaS bersertifikat HKI, dan verifikasi dokumen"
+        subtitle={t(
+          'Dasbor operasional telemetri, SaaS bersertifikat HKI, dan verifikasi dokumen',
+          'Telemetry operational dashboards, IP-certified SaaS, and document verification'
+        )}
         projects={enterpriseProjects}
       />
 
-      {/* 5. Fintech & Mobile Platforms */}
+      {/* 6. Fintech & Mobile Platforms */}
       <ProjectCarouselRow
         id="fintech-mobile"
-        title="Fintech & Aplikasi Mobile Native"
-        badge="Multi-Klien"
-        subtitle="Android Java native, sinkronisasi PostgreSQL Supabase, dan pembukuan instan"
+        title={t('Fintech & Aplikasi Mobile Native', 'Fintech & Native Mobile Apps')}
+        badge="Multi-Client"
+        subtitle={t(
+          'Android Java native, sinkronisasi PostgreSQL Supabase, dan pembukuan instan',
+          'Android Java native, Supabase PostgreSQL sync, and instant bookkeeping'
+        )}
         projects={fintechMobileProjects}
       />
 
-      {/* 6. Creative Labs & Kinetic Experiences */}
+      {/* 7. Creative Labs & Kinetic Experiences */}
       <ProjectCarouselRow
         id="creative-labs"
-        title="Laboratorium Kreatif & Eksperimen 60 FPS"
+        title={t('Laboratorium Kreatif & Eksperimen 60 FPS', 'Creative Labs & 60 FPS Experiments')}
         badge="GPU Composited"
-        subtitle="Animasi berbasis fisika kanvas, mikro-interaksi responsif, dan estetika kafe"
+        subtitle={t(
+          'Animasi berbasis fisika kanvas, mikro-interaksi responsif, dan estetika kafe',
+          'Canvas physics-based animations, responsive micro-interactions, and café aesthetics'
+        )}
         projects={creativeTechProjects}
-      />
-
-      {/* 7. Daftar Saya (My List) */}
-      <ProjectCarouselRow
-        id="my-list-row"
-        title="Daftar Saya"
-        badge={`${bookmarkedProjects.length} Proyek`}
-        subtitle="Daftar proyek dan studi kasus yang Anda simpan untuk ditinjau"
-        projects={bookmarkedProjects}
-        emptyMessage="Daftar tontonan proyek Anda masih kosong. Klik tombol '+' pada kartu untuk menyimpannya ke sini."
       />
     </section>
   );

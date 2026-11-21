@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { Search, X, SlidersHorizontal, ArrowUpDown, Bookmark, Sparkles } from 'lucide-react';
 import { Project, projectsData } from '@/data/projects';
 import { useStreamingStore } from '@/store/streamingStore';
+import { useLanguageStore } from '@/store/languageStore';
 import ProjectCard from './ProjectCard';
 
 const categories = [
@@ -73,6 +74,8 @@ export default function StreamingCatalogFilter() {
     setSearchQuery('');
   };
 
+  const { language, t } = useLanguageStore();
+
   return (
     <div id="catalog" className="px-6 md:px-12 py-12 border-t border-white/[0.08] space-y-8 max-w-7xl mx-auto">
       {/* Section Header */}
@@ -80,25 +83,25 @@ export default function StreamingCatalogFilter() {
         <div>
           <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#E50914] mb-2 uppercase font-bold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>KATALOG TAYANGAN NOCTRA</span>
+            <span>{t('KATALOG TAYANGAN NOCTRA', 'NOCTRA PRODUCTION CATALOG')}</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
-            Telusuri menurut Kategori
+            {t('Telusuri menurut Kategori', 'Browse by Category')}
           </h2>
         </div>
 
         {/* Live Filter Metric */}
         <div className="flex items-center gap-3 text-xs font-mono text-zinc-400">
           <span>
-            MENAMPILKAN <strong className="text-white font-bold">{filteredProjects.length}</strong> DARI{' '}
-            {projectsData.length} JUDUL
+            {t('MENAMPILKAN', 'SHOWING')} <strong className="text-white font-bold">{filteredProjects.length}</strong> {t('DARI', 'OF')}{' '}
+            {projectsData.length} {t('JUDUL', 'TITLES')}
           </span>
           {hasActiveFilter && (
             <button
               onClick={clearAllFilters}
               className="text-[#E50914] hover:underline transition-colors cursor-pointer"
             >
-              Reset Filter
+              {t('Reset Filter', 'Reset Filter')}
             </button>
           )}
         </div>

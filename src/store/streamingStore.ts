@@ -33,6 +33,10 @@ interface StreamingState {
   showToast: (message: string) => void;
   hideToast: () => void;
 
+  // Selected Service for Contact Form
+  selectedService: string;
+  setSelectedService: (service: string) => void;
+
   // Easter Egg Modal State
   isEasterEggOpen: boolean;
   openEasterEgg: () => void;
@@ -51,6 +55,9 @@ export const useStreamingStore = create<StreamingState>((set, get) => ({
   isEasterEggOpen: false,
   openEasterEgg: () => set({ isEasterEggOpen: true }),
   closeEasterEgg: () => set({ isEasterEggOpen: false }),
+
+  selectedService: 'Landing page (mulai Rp1.500.000)',
+  setSelectedService: (service) => set({ selectedService: service }),
 
   searchQuery: '',
   setSearchQuery: (query) => set({ searchQuery: query }),

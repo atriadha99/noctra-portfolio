@@ -25,7 +25,7 @@ const recommendations: Record<string, { title: string; subtitle: string; technol
         name: 'React',
         categoryTag: 'Component Architecture',
         matchScore: 99,
-        experienceLevel: '4+ Years • Primary Engine',
+        experienceLevel: 'Primary Engine',
         description: 'Declarative component hierarchies, optimistic mutations, and custom hooks architecture.',
         accentColor: '#38bdf8',
         featuredIn: ['pt-abb-dashboard', 'temucashflow', 'yare-coffee', 'sabda-alam-web'],

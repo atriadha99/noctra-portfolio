@@ -9,6 +9,7 @@ import About from '@/components/About';
 import Capabilities from '@/components/Capabilities';
 import Experience from '@/components/Experience';
 import StudioMusic from '@/components/StudioMusic';
+import ClientServices from '@/components/ClientServices';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import StreamingDetailModal from '@/components/streaming/StreamingDetailModal';
@@ -54,7 +55,10 @@ export default function HomePage() {
         {/* 10. Studio Soundscape */}
         <StudioMusic />
 
-        {/* 11. Contact Section & Direct Booking */}
+        {/* 11. Client Services & Transparent Starting Rates */}
+        <ClientServices />
+
+        {/* 12. Contact Section & Direct Booking */}
         <ContactSection />
       </main>
 

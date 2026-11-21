@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Info, Volume2, VolumeX, RotateCcw, Plus, Check } from 'lucide-react';
+import { Play, Info, Volume2, VolumeX, RotateCcw, Plus, Check, Download } from 'lucide-react';
 import { projectsData, Project } from '@/data/projects';
 import { useStreamingStore } from '@/store/streamingStore';
+import { useLanguageStore } from '@/store/languageStore';
 import SimulatedVideoPreview from './SimulatedVideoPreview';
 
 // Top featured showcase projects
@@ -16,6 +17,7 @@ export default function CinematicHero() {
   const [progress, setProgress] = useState(0);
 
   const { openModal, toggleBookmark, isBookmarked, isMuted, toggleMute } = useStreamingStore();
+  const { language, t } = useLanguageStore();
 
   const currentProject = featuredProjects[currentIndex] || featuredProjects[0];
   const bookmarked = isBookmarked(currentProject.id);
@@ -143,7 +145,7 @@ export default function CinematicHero() {
               TOP 10
             </div>
             <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">
-              #1 dalam Kategori Web &amp; Aplikasi Hari Ini
+              {t('#1 dalam Kategori Web & Aplikasi Hari Ini', '#1 in Web & Apps Category Today')}
             </span>
           </motion.div>
         </div>
@@ -156,10 +158,10 @@ export default function CinematicHero() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="text-sm sm:text-base md:text-lg text-white/95 leading-relaxed font-normal max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] line-clamp-3"
         >
-          {currentProject.description}
+          {language === 'en' && currentProject.descriptionEn ? currentProject.descriptionEn : currentProject.description}
         </motion.p>
 
-        {/* Signature Netflix Buttons: Play (Putar) and More Info (Selengkapnya) */}
+        {/* Signature Netflix Buttons: Play, More Info, Download CV & Bookmark */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -169,14 +171,15 @@ export default function CinematicHero() {
           {/* Exact Netflix White Play Button */}
           <a
             href={
-              currentProject.projectUrl !== '#' && !currentProject.projectUrl.includes('Coming Soon')
+              currentProject.verifiedLiveUrl ||
+              (currentProject.projectUrl !== '#' && !currentProject.projectUrl.includes('Coming Soon') && currentProject.projectUrl !== ''
                 ? currentProject.projectUrl
                 : currentProject.githubUrl.startsWith('http')
                 ? currentProject.githubUrl
-                : '#catalog'
+                : '#catalog')
             }
             target={
-              currentProject.projectUrl.startsWith('http') || currentProject.githubUrl.startsWith('http')
+              (currentProject.verifiedLiveUrl || currentProject.projectUrl.startsWith('http') || currentProject.githubUrl.startsWith('http'))
                 ? '_blank'
                 : '_self'
             }
@@ -184,7 +187,7 @@ export default function CinematicHero() {
             className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-[4px] bg-white text-black font-bold text-sm sm:text-base hover:bg-white/80 active:bg-white/60 transition-colors shadow-lg cursor-pointer"
           >
             <Play className="w-5 h-5 fill-black" />
-            <span>Putar Proyek</span>
+            <span>{t('Putar Proyek', 'Play Project')}</span>
           </a>
 
           {/* Exact Netflix Translucent Grey "More Info" Button */}
@@ -193,13 +196,23 @@ export default function CinematicHero() {
             className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-[4px] bg-[rgba(109,109,110,0.7)] hover:bg-[rgba(109,109,110,0.4)] text-white font-bold text-sm sm:text-base transition-colors backdrop-blur-sm cursor-pointer shadow-lg"
           >
             <Info className="w-5 h-5 text-white" />
-            <span>Selengkapnya</span>
+            <span>{t('Selengkapnya', 'More Info')}</span>
           </button>
+
+          {/* Download CV Button (Task 1: Highest Priority) */}
+          <a
+            href="/CV-Andika-Agung-Triadha.pdf"
+            download="CV-Andika-Agung-Triadha.pdf"
+            className="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 sm:py-3 rounded-[4px] bg-[#E50914] hover:bg-[#b80710] text-white font-bold text-sm sm:text-base transition-colors shadow-lg shadow-[#E50914]/25 cursor-pointer"
+          >
+            <Download className="w-5 h-5" />
+            <span>Download CV</span>
+          </a>
 
           {/* Circle Add to My List */}
           <button
             onClick={() => toggleBookmark(currentProject.id, currentProject.title)}
-            aria-label={bookmarked ? 'Hapus dari Daftar Saya' : 'Tambah ke Daftar Saya'}
+            aria-label={bookmarked ? t('Hapus dari Daftar Saya', 'Remove from My List') : t('Tambah ke Daftar Saya', 'Add to My List')}
             className={`w-11 h-11 rounded-full border border-white/40 flex items-center justify-center transition-all bg-[rgba(42,42,42,0.6)] hover:border-white ${
               bookmarked ? 'text-[#E50914] border-[#E50914]' : 'text-white'
             }`}

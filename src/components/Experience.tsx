@@ -2,22 +2,28 @@
 
 import { experiences, educationData } from '@/data/experience';
 import { Briefcase, Coffee, GraduationCap } from 'lucide-react';
+import { useLanguageStore } from '@/store/languageStore';
 
 export default function Experience() {
+  const { t } = useLanguageStore();
+
   return (
     <section id="experience" className="py-28 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6">
         <div>
           <div className="flex items-center gap-3 text-xs font-mono tracking-[0.25em] text-[#E50914] mb-3 uppercase font-bold">
-            <span>DOKUMENTASI REKAM JEJAK &amp; PENGALAMAN</span>
+            <span>{t('DOKUMENTASI REKAM JEJAK & PENGALAMAN', 'TRACK RECORD & EXPERIENCE ARCHIVE')}</span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white">
-            PENGALAMAN
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white uppercase">
+            {t('PENGALAMAN KERJA', 'WORK EXPERIENCE')}
           </h2>
         </div>
-        <p className="text-sm md:text-base text-zinc-400 max-w-md font-light">
-          Karier ganda yang ditempa dalam rekayasa perangkat lunak modern dan dipertajam oleh enam tahun disiplin operasional F&amp;B specialty volume tinggi.
+        <p className="text-sm md:text-base text-zinc-400 max-w-md font-light leading-relaxed">
+          {t(
+            'Karier ganda yang ditempa dalam rekayasa perangkat lunak modern dan dipertajam oleh enam tahun disiplin operasional F&B specialty volume tinggi.',
+            'Dual-track career grounded in modern software engineering and sharpened by six years of high-volume specialty F&B operational discipline.'
+          )}
         </p>
       </div>
 

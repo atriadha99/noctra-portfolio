@@ -1,8 +1,11 @@
 'use client';
 
 import { capabilities } from '@/data/capabilities';
+import { useLanguageStore } from '@/store/languageStore';
 
 export default function Capabilities() {
+  const { t } = useLanguageStore();
+
   return (
     <section id="capabilities" className="py-24 md:py-32 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto border-t border-[#2f2f2f]/60">
       {/* Section Header */}
@@ -10,14 +13,17 @@ export default function Capabilities() {
         <div>
           <div className="flex items-center gap-2.5 text-xs font-bold tracking-widest text-[#E50914] mb-3 uppercase">
             <span className="w-1.5 h-3 bg-[#E50914] rounded-sm"></span>
-            <span>GENRE & SPESIFIKASI TEKNIS</span>
+            <span>{t('GENRE & SPESIFIKASI TEKNIS', 'GENRES & TECHNICAL SPECS')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase">
-            KEAHLIAN & CORE STACK
+            {t('KEAHLIAN & CORE STACK', 'CAPABILITIES & CORE STACK')}
           </h2>
         </div>
         <p className="text-sm md:text-base text-[#a3a3a3] max-w-md font-normal leading-relaxed">
-          Kumpulan keahlian teknik mulai dari modern web architectures, cloud database, native Android ecosystem, hingga pipeline deployment performa tinggi.
+          {t(
+            'Kumpulan keahlian teknik mulai dari modern web architectures, cloud database, native Android ecosystem, hingga pipeline deployment performa tinggi.',
+            'Engineering capabilities spanning modern web architectures, cloud databases, native Android ecosystem, and high-performance deployment pipelines.'
+          )}
         </p>
       </div>
 

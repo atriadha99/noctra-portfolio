@@ -15,8 +15,10 @@ import {
   CheckCircle2,
   HeartHandshake
 } from 'lucide-react';
+import { useLanguageStore } from '@/store/languageStore';
 
 export default function About() {
+  const { t } = useLanguageStore();
   return (
     <section id="about" className="relative z-10 py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
       {/* Cinematic Studio Header */}
@@ -24,12 +26,12 @@ export default function About() {
         <div>
           <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#E50914] mb-2 uppercase font-bold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>PROFIL SUTRADARA &amp; FILOSOFI REKAYASA</span>
+            <span>{t('PROFIL SUTRADARA & FILOSOFI REKAYASA', 'CREATOR PROFILE & ENGINEERING PHILOSOPHY')}</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-            Di Balik Kode, Lensa
+            {t('Di Balik Kode, Lensa', 'Behind the Code, Lens')}
             <br />
-            <span className="text-zinc-500">&amp; Mesin Espresso.</span>
+            <span className="text-zinc-500">&amp; {t('Mesin Espresso.', 'Espresso Machine.')}</span>
           </h2>
         </div>
 

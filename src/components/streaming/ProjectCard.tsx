@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Plus, Check, ThumbsUp, ChevronDown } from 'lucide-react';
+import { Play, Plus, Check, ThumbsUp, ChevronDown, ExternalLink, Github } from 'lucide-react';
 import { Project } from '@/data/projects';
 import { useStreamingStore } from '@/store/streamingStore';
+import { useLanguageStore } from '@/store/languageStore';
 
 interface ProjectCardProps {
   project: Project;
@@ -14,8 +15,11 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { openModal, toggleBookmark, isBookmarked } = useStreamingStore();
+  const { language, t } = useLanguageStore();
   const bookmarked = isBookmarked(project.id);
   const [liked, setLiked] = useState(false);
+
+  const displayTagline = language === 'en' && project.taglineEn ? project.taglineEn : project.tagline;
 
   return (
     <div
@@ -35,13 +39,27 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         tabIndex={0}
         role="button"
         aria-label={`${project.title} - ${project.matchScore}% cocok`}
-        className="w-full h-full rounded-[4px] overflow-hidden bg-[#181818] border border-white/5 relative cursor-pointer shadow-md transition-transform duration-300 flex flex-col justify-between"
+        className="w-full h-full rounded-[4px] overflow-hidden bg-[#181818] border border-white/10 relative cursor-pointer shadow-md transition-transform duration-300 flex flex-col justify-between"
       >
-        {/* Background Visual Art & Accent Glow */}
+        {/* Task 11: 16:9 Cover Image (Screenshots for live projects, dark consistent template for others) */}
+        <div className="absolute inset-0 overflow-hidden bg-[#181818]">
+          <img
+            src={`/covers/${project.id}.webp`}
+            alt={project.title}
+            loading="lazy"
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+            onError={(e) => {
+              (e.currentTarget as HTMLElement).style.display = 'none';
+            }}
+          />
+        </div>
+
+        {/* Netflix Exact Multi-Stop Gradient Overlay for high text contrast */}
         <div
-          className="absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-75"
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
-            background: `radial-gradient(circle at 75% 20%, ${project.accentColor}40 0%, transparent 70%), linear-gradient(180deg, rgba(24,24,24,0.4) 0%, rgba(20,20,20,0.95) 100%)`,
+            background:
+              'linear-gradient(180deg, rgba(15,15,15,0.4) 0%, rgba(20,20,20,0.55) 35%, rgba(15,15,15,0.94) 90%)',
           }}
         />
 
@@ -65,22 +83,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
 
           <span className="text-[#46d369] font-bold text-xs">
-            {project.matchScore}% Cocok
+            {project.matchScore}% {t('Cocok', 'Match')}
           </span>
         </div>
 
         {/* Center / Bottom Typography */}
-        <div className="relative z-10 p-3 pt-0 space-y-0.5">
+        <div className="relative z-10 p-3 pt-0 space-y-1">
           <h4 className="font-display text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-zinc-100 transition-colors">
             {project.title}
           </h4>
 
           <p className="text-[11px] text-zinc-400 line-clamp-1 font-light">
-            {project.tagline}
+            {displayTagline}
           </p>
 
           {/* Quick Genres Bullet List */}
-          <div className="flex items-center gap-1 text-[10px] text-zinc-300 pt-1 truncate">
+          <div className="flex items-center gap-1 text-[10px] text-zinc-300 truncate">
             {project.techStack.slice(0, 3).map((tech, i) => (
               <React.Fragment key={tech}>
                 {i > 0 && <span className="text-[#E50914]">•</span>}
@@ -88,6 +106,38 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               </React.Fragment>
             ))}
           </div>
+
+          {/* Direct Verified Action Links on Card for instant access */}
+          {(project.verifiedLiveUrl || project.verifiedGithubUrl) && (
+            <div className="flex items-center gap-1.5 pt-1">
+              {project.verifiedLiveUrl && (
+                <a
+                  href={project.verifiedLiveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] bg-white text-black text-[10px] font-bold hover:bg-white/80 transition-colors cursor-pointer"
+                  title="Live Demo"
+                >
+                  <ExternalLink className="w-2.5 h-2.5" />
+                  <span>Live Demo</span>
+                </a>
+              )}
+              {project.verifiedGithubUrl && (
+                <a
+                  href={project.verifiedGithubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] bg-[#222222] text-white border border-white/20 text-[10px] font-bold hover:border-white transition-colors cursor-pointer"
+                  title="GitHub Repository"
+                >
+                  <Github className="w-2.5 h-2.5" />
+                  <span>GitHub</span>
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         {/* If Continue Building: Red Progress Bar at Card Bottom like Netflix */}
@@ -114,10 +164,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           className="relative w-full aspect-[16/9] overflow-hidden bg-black cursor-pointer flex flex-col justify-between p-3"
           onClick={() => openModal(project)}
         >
+          {/* Cover image in hover preview */}
+          <img
+            src={`/covers/${project.id}.webp`}
+            alt={project.title}
+            className="absolute inset-0 w-full h-full object-cover object-top opacity-70 group-hover:opacity-85 transition-opacity duration-300 pointer-events-none"
+            onError={(e) => {
+              (e.currentTarget as HTMLElement).style.display = 'none';
+            }}
+          />
+
           <div
-            className="absolute inset-0 opacity-50"
+            className="absolute inset-0 opacity-60"
             style={{
-              background: `radial-gradient(circle at 75% 20%, ${project.accentColor}50 0%, transparent 70%), linear-gradient(180deg, rgba(24,24,24,0.4) 0%, rgba(20,20,20,0.95) 100%)`,
+              background: `radial-gradient(circle at 75% 20%, ${project.accentColor}50 0%, transparent 70%), linear-gradient(180deg, rgba(24,24,24,0.3) 0%, rgba(20,20,20,0.95) 100%)`,
             }}
           />
 
@@ -189,6 +249,36 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <ChevronDown className="w-4 h-4" />
             </button>
           </div>
+
+          {/* Prominent Live Demo & GitHub Buttons in Hover Modal */}
+          {(project.verifiedLiveUrl || project.verifiedGithubUrl) && (
+            <div className="flex items-center gap-2 pt-0.5">
+              {project.verifiedLiveUrl && (
+                <a
+                  href={project.verifiedLiveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-white text-black text-xs font-bold hover:bg-white/90 active:bg-white/70 transition-colors shadow cursor-pointer"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Live Demo</span>
+                </a>
+              )}
+              {project.verifiedGithubUrl && (
+                <a
+                  href={project.verifiedGithubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-[#222222] text-white border border-white/20 text-xs font-bold hover:border-white active:bg-white/10 transition-colors shadow cursor-pointer"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
+                </a>
+              )}
+            </div>
+          )}
 
           {/* Metadata Row */}
           <div className="flex items-center gap-2 text-xs">

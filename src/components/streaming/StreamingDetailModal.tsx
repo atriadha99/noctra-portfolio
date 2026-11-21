@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { Project, projectsData } from '@/data/projects';
 import { useStreamingStore } from '@/store/streamingStore';
+import { useLanguageStore } from '@/store/languageStore';
 import SimulatedVideoPreview from './SimulatedVideoPreview';
 
 export default function StreamingDetailModal() {
@@ -41,6 +42,7 @@ export default function StreamingDetailModal() {
   const [activeTab, setActiveTab] = useState<'episodes' | 'case-study' | 'specs' | 'gallery'>('episodes');
   const [selectedScreenshotIdx, setSelectedScreenshotIdx] = useState(0);
   const [liked, setLiked] = useState(false);
+  const { language, t } = useLanguageStore();
 
   // Keyboard navigation & lock background scroll
   useEffect(() => {
@@ -148,31 +150,37 @@ export default function StreamingDetailModal() {
               </h2>
 
               <p className="text-sm sm:text-base text-white/90 max-w-2xl font-light line-clamp-2 drop-shadow">
-                {project.tagline}
+                {language === 'en' && project.taglineEn ? project.taglineEn : project.tagline}
               </p>
 
               {/* Action Buttons Toolbar */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                {/* Netflix Play Button */}
-                <a
-                  href={
-                    project.projectUrl !== '#' && !project.projectUrl.includes('Coming Soon')
-                      ? project.projectUrl
-                      : project.githubUrl.startsWith('http')
-                      ? project.githubUrl
-                      : '#'
-                  }
-                  target={
-                    project.projectUrl.startsWith('http') || project.githubUrl.startsWith('http')
-                      ? '_blank'
-                      : '_self'
-                  }
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 rounded-[4px] bg-white text-black font-bold text-sm sm:text-base hover:bg-white/80 active:bg-white/60 transition-colors cursor-pointer shadow-lg"
-                >
-                  <Play className="w-4 h-4 fill-black" />
-                  <span>Putar Demo</span>
-                </a>
+                {/* Netflix Play / Live Demo Button */}
+                {project.verifiedLiveUrl && (
+                  <a
+                    href={project.verifiedLiveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 rounded-[4px] bg-white text-black font-bold text-sm sm:text-base hover:bg-white/80 active:bg-white/60 transition-colors cursor-pointer shadow-lg"
+                  >
+                    <Play className="w-4 h-4 fill-black" />
+                    <span>{t('Putar Demo', 'Live Demo')}</span>
+                  </a>
+                )}
+
+                {/* GitHub Button */}
+                {project.verifiedGithubUrl && (
+                  <a
+                    href={project.verifiedGithubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[4px] bg-[#2a2a2a] text-white border border-white/30 hover:border-white font-bold text-sm transition-colors cursor-pointer shadow-lg"
+                    title={t('Buka Repositori GitHub', 'Open GitHub Repository')}
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>GitHub</span>
+                  </a>
+                )}
 
                 {/* Circle My List */}
                 <button
@@ -182,7 +190,7 @@ export default function StreamingDetailModal() {
                       ? 'border-[#E50914] bg-[#E50914]/20 text-[#E50914]'
                       : 'border-white/40 bg-[#2a2a2a] text-white hover:border-white'
                   }`}
-                  title={bookmarked ? 'Hapus dari Daftar Saya' : 'Tambah ke Daftar Saya'}
+                  title={bookmarked ? t('Hapus dari Daftar Saya', 'Remove from My List') : t('Tambah ke Daftar Saya', 'Add to My List')}
                 >
                   {bookmarked ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                 </button>
@@ -195,30 +203,17 @@ export default function StreamingDetailModal() {
                       ? 'border-[#46d369] bg-[#46d369]/20 text-[#46d369]'
                       : 'border-white/40 bg-[#2a2a2a] text-white hover:border-white'
                   }`}
-                  title="Suka"
+                  title={t('Suka', 'Like')}
                 >
                   <ThumbsUp className="w-4 h-4" />
                 </button>
 
-                {/* Circle GitHub Repo */}
-                {project.githubUrl.startsWith('http') && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full border border-white/40 bg-[#2a2a2a] text-white hover:border-white flex items-center justify-center transition-all cursor-pointer"
-                    title="Buka Repositori GitHub"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
-                )}
-
                 {/* Circle Share */}
                 <button
                   onClick={handleShare}
-                  aria-label="Bagikan"
+                  aria-label={t('Bagikan', 'Share')}
                   className="w-10 h-10 rounded-full border border-white/40 bg-[#2a2a2a] text-white hover:border-white flex items-center justify-center transition-all cursor-pointer"
-                  title="Salin Tautan"
+                  title={t('Salin Tautan', 'Copy Link')}
                 >
                   <Share2 className="w-4 h-4" />
                 </button>
@@ -252,7 +247,7 @@ export default function StreamingDetailModal() {
 
                 {/* Synopsis */}
                 <p className="text-sm sm:text-base text-zinc-200 leading-relaxed font-light">
-                  {project.description}
+                  {language === 'en' && project.descriptionEn ? project.descriptionEn : project.description}
                 </p>
 
                 {/* Case Study Overview highlight */}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Play, Info, Plus, Check } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Info, Plus, Check, ExternalLink, Github } from 'lucide-react';
 import { Project } from '@/data/projects';
 import { useStreamingStore } from '@/store/streamingStore';
 
@@ -93,11 +93,21 @@ export default function Top10CarouselRow({ id, title, projects }: Top10CarouselR
 
                 {/* Card Poster */}
                 <div className="relative z-10 w-[140px] sm:w-[170px] md:w-[190px] aspect-[2/3] rounded-[4px] overflow-hidden bg-[#181818] border border-white/10 group-hover/card:scale-105 group-hover/card:border-white/40 transition-all duration-300 shadow-xl flex flex-col justify-between p-3.5">
+                  {/* Card Cover Image */}
+                  <img
+                    src={`/covers/${project.id}.webp`}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover/card:opacity-65 transition-opacity"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLElement).style.display = 'none';
+                    }}
+                  />
+
                   {/* Card Background Gradient */}
                   <div
-                    className="absolute inset-0 opacity-40 transition-opacity group-hover/card:opacity-70"
+                    className="absolute inset-0 opacity-60 transition-opacity group-hover/card:opacity-80"
                     style={{
-                      background: `radial-gradient(circle at 50% 20%, ${project.accentColor}50 0%, transparent 80%), linear-gradient(180deg, rgba(20,20,20,0.4) 0%, #141414 100%)`,
+                      background: `radial-gradient(circle at 50% 20%, ${project.accentColor}50 0%, transparent 80%), linear-gradient(180deg, rgba(20,20,20,0.3) 0%, #141414 100%)`,
                     }}
                   />
 
@@ -117,25 +127,51 @@ export default function Top10CarouselRow({ id, title, projects }: Top10CarouselR
                     </h4>
 
                     {/* Quick Micro Action Icons on Hover */}
-                    <div className="pt-2 flex items-center gap-1.5 opacity-0 group-hover/card:opacity-100 transition-opacity">
+                    <div className="pt-2 flex flex-wrap items-center gap-1.5 opacity-0 group-hover/card:opacity-100 transition-opacity">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           openModal(project);
                         }}
-                        className="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/80 transition-colors"
-                        title="Putar"
+                        className="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center hover:bg-white/80 transition-colors cursor-pointer"
+                        title="Detail Proyek"
                       >
                         <Play className="w-3.5 h-3.5 fill-black" />
                       </button>
+
+                      {project.verifiedLiveUrl && (
+                        <a
+                          href={project.verifiedLiveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-500 transition-colors cursor-pointer"
+                          title="Live Demo"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+
+                      {project.verifiedGithubUrl && (
+                        <a
+                          href={project.verifiedGithubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-7 h-7 rounded-full bg-[#2a2a2a] border border-white/30 text-white flex items-center justify-center hover:border-white transition-colors cursor-pointer"
+                          title="GitHub Repository"
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                        </a>
+                      )}
 
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleBookmark(project.id, project.title);
                         }}
-                        className="w-7 h-7 rounded-full bg-[#2a2a2a] border border-white/30 text-white flex items-center justify-center hover:border-white transition-colors"
-                        title="Daftar Saya"
+                        className="w-7 h-7 rounded-full bg-[#2a2a2a] border border-white/30 text-white flex items-center justify-center hover:border-white transition-colors cursor-pointer"
+                        title="Simpan Proyek"
                       >
                         {bookmarked ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                       </button>

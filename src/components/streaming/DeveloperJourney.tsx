@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clapperboard, Calendar, CheckCircle2, ChevronRight, Play, Award, Coffee, Briefcase, GraduationCap } from 'lucide-react';
+import { useLanguageStore } from '@/store/languageStore';
 
 interface Episode {
   episodeNumber: string;
@@ -243,24 +244,28 @@ const seasons: Season[] = [
 export default function DeveloperJourney() {
   const [activeSeasonId, setActiveSeasonId] = useState('season-05');
   const activeSeason = seasons.find((s) => s.seasonId === activeSeasonId) || seasons[4];
+  const { t } = useLanguageStore();
 
   return (
     <section id="journey" className="relative z-10 py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-blue-400 mb-2 uppercase">
+          <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#E50914] mb-2 uppercase font-bold">
             <Clapperboard className="w-3.5 h-3.5" />
-            <span>04 // SERIES TIMELINE &amp; TRAJECTORY</span>
+            <span>{t('TIMELINE SERIAL & REKAM JEJAK', 'SERIES TIMELINE & TRAJECTORY')}</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white flex items-center gap-3">
             <span>Developer Journey</span>
-            <span className="text-xs font-mono px-2.5 py-0.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 uppercase font-semibold">
+            <span className="text-xs font-mono px-2.5 py-0.5 rounded-full border border-[#E50914]/40 bg-[#E50914]/10 text-[#E50914] uppercase font-semibold">
               5 Seasons
             </span>
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 font-light mt-1.5 max-w-xl">
-            Explore Andika's evolution from aircraft structure manufacturing and high-volume specialty coffee operations to enterprise software systems.
+            {t(
+              "Eksplorasi perjalanan rekayasa Andika dari konstruksi rangka pesawat dan disiplin kopi specialty volume tinggi hingga arsitektur software enterprise.",
+              "Explore Andika's evolution from aircraft structure manufacturing and high-volume specialty coffee operations to enterprise software systems."
+            )}
           </p>
         </div>
 
