@@ -200,7 +200,7 @@ export default function ClientServices() {
   };
 
   return (
-    <section id="services" className="py-24 md:py-32 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto border-t border-[#2f2f2f]/60">
+    <section id="services" className="py-12 md:py-16 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto border-t border-[#2f2f2f]/60">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
         <div>

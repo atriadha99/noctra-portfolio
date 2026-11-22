@@ -93,8 +93,11 @@ export default function StreamingCatalogFilter() {
         {/* Live Filter Metric */}
         <div className="flex items-center gap-3 text-xs font-mono text-zinc-400">
           <span>
-            {t('MENAMPILKAN', 'SHOWING')} <strong className="text-white font-bold">{filteredProjects.length}</strong> {t('DARI', 'OF')}{' '}
-            {projectsData.length} {t('JUDUL', 'TITLES')}
+            {t('MENAMPILKAN', 'SHOWING')}{' '}
+            <strong className="text-white font-bold">{filteredProjects.length}</strong>{' '}
+            {t('DARI', 'OF')}{' '}
+            <strong className="text-white font-bold">{projectsData.length}</strong>{' '}
+            {t('JUDUL', 'TITLES')}
           </span>
           {hasActiveFilter && (
             <button
@@ -108,9 +111,9 @@ export default function StreamingCatalogFilter() {
       </div>
 
       {/* Filter & Search Toolbar */}
-      <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 p-3 rounded-2xl bg-zinc-950/70 border border-white/10 backdrop-blur-md">
-        {/* Category Pills (Horizontal scroll on mobile) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
+      <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-4 p-3 rounded-2xl bg-zinc-950/70 border border-white/10 backdrop-blur-md">
+        {/* Category Pills (Wraps cleanly on desktop so all pills are visible) */}
+        <div className="flex flex-wrap items-center gap-2">
           {categories.map((cat) => {
             const isSelected = selectedCategory === cat.id;
             const count =
@@ -118,7 +121,10 @@ export default function StreamingCatalogFilter() {
                 ? bookmarkedIds.length
                 : cat.id === 'ALL'
                 ? projectsData.length
-                : projectsData.filter((p) => p.categoryGroup === cat.id).length;
+                : projectsData.filter((p) =>
+                    p.categories?.includes(cat.id as any) ||
+                    p.category.toLowerCase().includes(cat.id.toLowerCase())
+                  ).length;
 
             return (
               <button

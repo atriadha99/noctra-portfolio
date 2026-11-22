@@ -257,7 +257,7 @@ export default function DeveloperJourney() {
           </div>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white flex items-center gap-3">
             <span>Developer Journey</span>
-            <span className="text-xs font-mono px-2.5 py-0.5 rounded-full border border-[#E50914]/40 bg-[#E50914]/10 text-[#E50914] uppercase font-semibold">
+            <span className="text-xs font-mono px-2.5 py-0.5 rounded-full border border-[#E50914]/40 bg-[#E50914]/10 text-[#E50914] uppercase font-semibold whitespace-nowrap shrink-0 inline-flex items-center">
               5 Seasons
             </span>
           </h2>

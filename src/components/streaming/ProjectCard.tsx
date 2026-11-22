@@ -151,11 +151,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         )}
       </div>
 
-      {/* Netflix Hover Enlarge Popup Panel (Desktop) */}
+      {/* Netflix Hover Enlarge Popup Panel (Desktop) - bounded to card footprint to avoid covering neighbors */}
       <div
-        className={`hidden md:block absolute -top-12 -left-8 w-[380px] rounded-md bg-[#181818] shadow-2xl border border-white/20 z-50 overflow-hidden transition-all duration-300 pointer-events-none ${
+        className={`hidden md:block absolute -top-3 -left-1 w-[calc(100%+8px)] rounded-md bg-[#181818] shadow-2xl border border-white/20 z-50 overflow-hidden transition-all duration-300 pointer-events-none ${
           isHovered
-            ? 'opacity-100 scale-105 pointer-events-auto shadow-[0_10px_30px_rgba(0,0,0,0.9)]'
+            ? 'opacity-100 scale-[1.02] pointer-events-auto shadow-[0_12px_36px_rgba(0,0,0,0.95)]'
             : 'opacity-0 scale-95 pointer-events-none'
         }`}
       >
@@ -293,11 +293,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
 
           {/* Genre Chips with Red Dots */}
-          <div className="flex items-center gap-1.5 text-xs text-white truncate">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs text-white">
             {project.techStack.map((tech, i) => (
               <React.Fragment key={tech}>
                 {i > 0 && <span className="text-[#E50914] text-[10px]">•</span>}
-                <span>{tech}</span>
+                <span className="whitespace-nowrap">{tech}</span>
               </React.Fragment>
             ))}
           </div>

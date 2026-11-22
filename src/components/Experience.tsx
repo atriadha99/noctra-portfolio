@@ -8,9 +8,9 @@ export default function Experience() {
   const { t } = useLanguageStore();
 
   return (
-    <section id="experience" className="py-28 md:py-36 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="experience" className="py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-14 gap-6">
         <div>
           <div className="flex items-center gap-3 text-xs font-mono tracking-[0.25em] text-[#E50914] mb-3 uppercase font-bold">
             <span>{t('DOKUMENTASI REKAM JEJAK & PENGALAMAN', 'TRACK RECORD & EXPERIENCE ARCHIVE')}</span>
@@ -27,9 +27,9 @@ export default function Experience() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Experience Timeline Column */}
-        <div className="lg:col-span-8 space-y-8">
+        <div className="lg:col-span-7 space-y-8">
           <p className="text-xs font-mono tracking-widest text-zinc-500 uppercase pb-2 border-b border-white/[0.08]">
             TIMELINE KRONOLOGIS // 2018 — 2026
           </p>
@@ -87,7 +87,7 @@ export default function Experience() {
         </div>
 
         {/* Education & Context Column */}
-        <div className="lg:col-span-4 space-y-10 lg:border-l lg:border-white/[0.08] lg:pl-10">
+        <div className="lg:col-span-5 space-y-8 lg:border-l lg:border-white/[0.08] lg:pl-8 sticky top-24">
           {/* F&B Operational Philosophy Note */}
           <div className="p-6 rounded-2xl border border-white/[0.08] bg-[#0c0c10] space-y-3 font-mono text-xs">
             <span className="text-blue-400 font-bold block">// WHY BARISTA MATTERS</span>

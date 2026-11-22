@@ -72,12 +72,22 @@ export default function CinematicHero() {
             transition={{ duration: 0.9, ease: 'easeOut' }}
             className="absolute inset-0 w-full h-full"
           >
-            {/* Simulated Live Video / Canvas Telemetry */}
+            {/* Real 16:9 Project Screenshot as Authentic Cinematic Billboard Backdrop */}
+            <img
+              src={`/covers/${currentProject.id}.webp`}
+              alt={currentProject.title}
+              className="absolute inset-0 w-full h-full object-cover object-top opacity-65 md:opacity-75 transition-opacity duration-700"
+              onError={(e) => {
+                (e.currentTarget as HTMLElement).style.display = 'none';
+              }}
+            />
+
+            {/* Subtle Telemetry Overlay */}
             <SimulatedVideoPreview
               project={currentProject}
               isPlaying={true}
               isMuted={isMuted}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover mix-blend-screen opacity-35"
             />
           </motion.div>
         </AnimatePresence>

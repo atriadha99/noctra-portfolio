@@ -6,7 +6,8 @@ import { Howl } from 'howler';
 import { useMusicStore } from '@/store/music-store';
 
 export default function StudioMusic() {
-  const playlistId = '2KEFUQb2SGRQHycm9VQuJ4';
+  // Verified official Spotify playlist: "Coding Mode" (ambient / electronic focus beats)
+  const playlistId = '37i9dQZF1DX5trtVJQhWOS';
   const soundRef = useRef<Howl | null>(null);
   const { isPlaying, toggle } = useMusicStore();
 
@@ -36,7 +37,7 @@ export default function StudioMusic() {
   }, [isPlaying]);
 
   return (
-    <section id="studio-sound" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="studio-sound" className="py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Editorial Heading Column */}
         <div className="lg:col-span-5 space-y-6">
@@ -100,7 +101,7 @@ export default function StudioMusic() {
                 style={{ borderRadius: '12px' }}
                 src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator&theme=0`}
                 width="100%"
-                height="352"
+                height="440"
                 frameBorder={0}
                 allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

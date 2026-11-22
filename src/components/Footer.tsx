@@ -14,8 +14,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-[#141414] text-[#737373] py-16 px-4 sm:px-8 md:px-12 text-[13px] font-sans">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <footer className="border-t border-white/10 bg-[#141414] text-[#737373] py-10 sm:py-12 px-6 sm:px-10 md:px-16 text-[13px] font-sans">
+      <div className="max-w-7xl lg:max-w-[1400px] mx-auto space-y-8">
         {/* Top Contact Question */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
 
         {/* 4 Columns Netflix Links Matrix */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 text-xs leading-relaxed">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 text-xs leading-relaxed">
           <div className="space-y-3">
             <a href="#hero" className="block hover:underline">
               {t('Beranda Proyek', 'Project Billboard')}

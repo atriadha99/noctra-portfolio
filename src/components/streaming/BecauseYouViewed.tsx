@@ -197,7 +197,7 @@ export default function BecauseYouViewed() {
               >
                 {/* Top Badge & Match Index */}
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between text-[11px] font-mono">
+                  <div className="flex items-center justify-between text-[11px] font-mono gap-2">
                     <span
                       className="px-2 py-0.5 rounded-full text-[10px] font-semibold border"
                       style={{
@@ -208,7 +208,7 @@ export default function BecauseYouViewed() {
                     >
                       {tech.categoryTag}
                     </span>
-                    <span className="text-emerald-400 font-bold">{tech.matchScore}% MATCH</span>
+                    <span className="text-emerald-400 font-bold whitespace-nowrap shrink-0">{tech.matchScore}% MATCH</span>
                   </div>
 
                   <div>
@@ -235,7 +235,7 @@ export default function BecauseYouViewed() {
                       <button
                         key={p!.id}
                         onClick={() => openModal(p!)}
-                        className="text-[11px] font-mono px-2 py-1 rounded bg-black/60 hover:bg-white hover:text-black text-zinc-300 border border-white/10 transition-all truncate max-w-[150px]"
+                        className="text-[11px] font-mono px-2.5 py-1 rounded bg-black/60 hover:bg-white hover:text-black text-zinc-300 border border-white/10 transition-all text-left whitespace-normal leading-snug cursor-pointer"
                       >
                         {p!.title}
                       </button>

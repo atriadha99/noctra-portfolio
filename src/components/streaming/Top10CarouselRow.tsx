@@ -97,7 +97,7 @@ export default function Top10CarouselRow({ id, title, projects }: Top10CarouselR
                   <img
                     src={`/covers/${project.id}.webp`}
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover object-top opacity-40 group-hover/card:opacity-65 transition-opacity"
+                    className="absolute inset-0 w-full h-full object-cover object-center opacity-50 group-hover/card:opacity-75 transition-opacity"
                     onError={(e) => {
                       (e.currentTarget as HTMLElement).style.display = 'none';
                     }}
