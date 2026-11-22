@@ -55,7 +55,7 @@ const recommendations: Record<string, { title: string; subtitle: string; technol
         experienceLevel: 'v3 / v4 Engine',
         description: 'Utility-first token systems, custom theme layers, and fluid responsive grid layouts.',
         accentColor: '#38bdf8',
-        featuredIn: ['kcd-wilayah-8', 'compawnion', 'pt-abb-dashboard', 'temucashflow'],
+        featuredIn: ['kcd-wilayah-8', 'pt-abb-dashboard', 'temucashflow'],
       },
       {
         name: 'Supabase',
@@ -64,7 +64,7 @@ const recommendations: Record<string, { title: string; subtitle: string; technol
         experienceLevel: 'Auth & RLS Architecture',
         description: 'Postgres triggers, Row-Level Security policies, and instant WebSocket state hydration.',
         accentColor: '#3ecf8e',
-        featuredIn: ['kcd-wilayah-8', 'temucashflow', 'compawnion', 'portal-ekskul-binusa'],
+        featuredIn: ['kcd-wilayah-8', 'temucashflow', 'portal-ekskul-binusa'],
       },
       {
         name: 'PostgreSQL',
@@ -100,13 +100,13 @@ const recommendations: Record<string, { title: string; subtitle: string; technol
         featuredIn: ['temucashflow', 'temulab-mobile'],
       },
       {
-        name: 'React Native',
-        categoryTag: 'Cross-Platform',
+        name: 'SQLite / Local Storage',
+        categoryTag: 'Local-First Storage',
         matchScore: 93,
-        experienceLevel: 'Expo & CLI',
-        description: 'Unified TypeScript codebases for iOS and Android with 60 FPS touch gestures.',
+        experienceLevel: 'SQLite & Cache Strategy',
+        description: 'Local caching and asynchronous queue mutations for reliable offline usage on Android devices.',
         accentColor: '#61dafb',
-        featuredIn: ['compawnion'],
+        featuredIn: ['temucashflow', 'temulab-mobile'],
       },
       {
         name: 'Supabase Sync',
@@ -115,7 +115,7 @@ const recommendations: Record<string, { title: string; subtitle: string; technol
         experienceLevel: 'Postgres Realtime',
         description: 'Local SQLite mutations synchronized upon cellular reconnection with conflict resolution.',
         accentColor: '#3ecf8e',
-        featuredIn: ['temucashflow', 'compawnion'],
+        featuredIn: ['temucashflow'],
       },
       {
         name: 'Firebase',

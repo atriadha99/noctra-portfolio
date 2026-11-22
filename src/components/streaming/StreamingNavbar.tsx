@@ -66,8 +66,8 @@ export default function StreamingNavbar() {
     },
     {
       id: 2,
-      title: 'COMPawnion: Fitur Radar Klinik 24 Jam',
-      desc: 'Deteksi geolokasi klinik dokter hewan darurat aktif.',
+      title: 'TemuCashflow: Web & Native Mobile Sync',
+      desc: 'Pencatatan kas dan integrasi offline-first ledger aktif.',
       time: 'Update',
       unread: true,
     },

@@ -201,10 +201,10 @@ const seasons: Season[] = [
     seasonId: 'season-05',
     seasonNumber: 'Season 05',
     title: 'Project Work & Future Releases',
-    subtitle: 'Public GovTech, Animal Companion & NOCTRA Experience',
+    subtitle: 'Public GovTech, Enterprise Systems & NOCTRA Experience',
     years: '2025 — 2026+',
     episodesCount: 3,
-    synopsis: 'Architecting flagship public service platforms for West Java government, animal health ecosystems, and the NOCTRA digital streaming portfolio.',
+    synopsis: 'Architecting flagship public service platforms for West Java government, enterprise industrial operations dashboards, and the NOCTRA digital streaming portfolio.',
     keyTechUnlocked: ['Next.js 16 (Turbopack)', 'Framer Motion', 'Zustand', 'Lenis Inertial Scroll'],
     episodes: [
       {
@@ -219,13 +219,13 @@ const seasons: Season[] = [
       },
       {
         episodeNumber: 'E02',
-        title: 'COMPawnion Smart Pet Health & Clinic Radar',
-        year: '2025 — 2026',
-        duration: 'Pet-Tech Platform',
-        synopsis: 'Digital pet health passport with automated vaccination calendars, species-tailored nutrition calculations, and 24h veterinary emergency proximity radar.',
+        title: 'PT ABB: Enterprise Industrial Analytics & Operational Monitoring',
+        year: '2024 — 2025',
+        duration: 'Industrial Dashboard',
+        synopsis: 'Operational monitoring platform consolidating machine telemetry, shift rosters, and production KPIs into a high-density, low-latency interface.',
         iconType: 'engineering',
-        badge: 'Pet Health',
-        techStack: ['React Native', 'Next.js', 'TypeScript', 'Supabase', 'Leaflet Maps'],
+        badge: 'Enterprise',
+        techStack: ['React.js', 'TypeScript', 'Tailwind CSS', 'Chart.js', 'REST API'],
       },
       {
         episodeNumber: 'E03',

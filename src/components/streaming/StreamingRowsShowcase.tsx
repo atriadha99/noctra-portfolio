@@ -14,23 +14,22 @@ export default function StreamingRowsShowcase() {
     'kcd-wilayah-8',
     'noctra-portfolio',
     'temucashflow',
-    'compawnion',
     'pt-abb-dashboard',
     'sabda-alam-web',
     'portal-ekskul-binusa',
     'lendspace-hki',
     'noctra-velocitra',
     'yare-coffee',
+    'ecommerce-platform',
   ]
     .map((id) => projectsData.find((p) => p.id === id))
     .filter(Boolean) as typeof projectsData;
 
-  // Proyek Unggulan (4 Proyek Terkuat: KCD Wilayah VIII, PT ABB Dashboard, TemuCashflow, COMPawnion)
+  // Proyek Unggulan (3 Proyek Terkuat: KCD Wilayah VIII, PT ABB Dashboard, TemuCashflow)
   const featuredProjects = [
     'kcd-wilayah-8',
     'pt-abb-dashboard',
     'temucashflow',
-    'compawnion',
   ]
     .map((id) => projectsData.find((p) => p.id === id))
     .filter(Boolean) as typeof projectsData;
