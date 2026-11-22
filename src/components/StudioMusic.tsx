@@ -37,7 +37,7 @@ export default function StudioMusic() {
   }, [isPlaying]);
 
   return (
-    <section id="studio-sound" className="py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="studio-sound" className="py-12 md:py-16 px-4 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-white/[0.08]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Editorial Heading Column */}
         <div className="lg:col-span-5 space-y-6">

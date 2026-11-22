@@ -77,7 +77,7 @@ export default function StreamingCatalogFilter() {
   const { language, t } = useLanguageStore();
 
   return (
-    <div id="catalog" className="px-6 md:px-12 py-12 border-t border-white/[0.08] space-y-8 max-w-7xl mx-auto">
+    <div id="catalog" className="px-4 sm:px-8 md:px-12 py-12 border-t border-white/[0.08] space-y-8 max-w-[1440px] mx-auto">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
@@ -215,10 +215,10 @@ export default function StreamingCatalogFilter() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProjects.map((project) => (
             <div key={project.id} className="w-full">
-              <ProjectCard project={project} />
+              <ProjectCard project={project} className="w-full" />
             </div>
           ))}
         </div>

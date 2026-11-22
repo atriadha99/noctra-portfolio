@@ -137,7 +137,7 @@ export default function BecauseYouViewed() {
   const currentRec = recommendations[selectedPill];
 
   return (
-    <section id="recommendations" className="relative z-10 py-10 md:py-16 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="recommendations" className="relative z-10 py-10 md:py-16 px-4 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-white/[0.08]">
       {/* Header with Playful Streaming Recommendation Cue */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-10">
         <div>

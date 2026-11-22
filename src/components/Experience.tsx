@@ -8,7 +8,7 @@ export default function Experience() {
   const { t } = useLanguageStore();
 
   return (
-    <section id="experience" className="py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="experience" className="py-12 md:py-16 px-4 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-white/[0.08]">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-14 gap-6">
         <div>

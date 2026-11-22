@@ -86,7 +86,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="pt-12 pb-10 md:pt-16 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1400px] mx-auto border-t border-[#2f2f2f]/60">
+    <section id="contact" className="pt-12 pb-10 md:pt-16 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-[#2f2f2f]/60">
       {/* Section Header */}
       <div className="flex items-center gap-2.5 text-xs font-bold tracking-widest text-[#E50914] mb-8 uppercase">
         <span className="w-1.5 h-3 bg-[#E50914] rounded-sm"></span>

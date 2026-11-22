@@ -20,7 +20,7 @@ import { useLanguageStore } from '@/store/languageStore';
 export default function About() {
   const { t } = useLanguageStore();
   return (
-    <section id="about" className="relative z-10 py-10 md:py-14 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="about" className="relative z-10 py-10 md:py-14 px-4 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-white/[0.08]">
       {/* Cinematic Studio Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>

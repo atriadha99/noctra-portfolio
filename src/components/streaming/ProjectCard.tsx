@@ -10,9 +10,10 @@ import { useLanguageStore } from '@/store/languageStore';
 interface ProjectCardProps {
   project: Project;
   priority?: boolean;
+  className?: string;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, className }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { openModal, toggleBookmark, isBookmarked } = useStreamingStore();
   const { language, t } = useLanguageStore();
@@ -23,7 +24,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <div
-      className="relative flex-none w-[240px] sm:w-[280px] md:w-[320px] aspect-[16/9] select-none group focus-within:z-40"
+      className={`relative aspect-[16/9] select-none group focus-within:z-40 ${
+        className || 'flex-none w-[240px] sm:w-[280px] md:w-[320px] xl:w-[360px]'
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

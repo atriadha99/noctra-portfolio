@@ -247,7 +247,7 @@ export default function DeveloperJourney() {
   const { t } = useLanguageStore();
 
   return (
-    <section id="journey" className="relative z-10 py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+    <section id="journey" className="relative z-10 py-16 md:py-24 px-4 sm:px-8 md:px-12 max-w-[1440px] mx-auto border-t border-white/[0.08]">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>

@@ -15,7 +15,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-[#141414] text-[#737373] py-10 sm:py-12 px-6 sm:px-10 md:px-16 text-[13px] font-sans">
-      <div className="max-w-7xl lg:max-w-[1400px] mx-auto space-y-8">
+      <div className="max-w-[1440px] mx-auto space-y-8">
         {/* Top Contact Question */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>

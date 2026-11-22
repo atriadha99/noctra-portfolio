@@ -92,7 +92,7 @@ export default function Top10CarouselRow({ id, title, projects }: Top10CarouselR
                 </div>
 
                 {/* Card Poster */}
-                <div className="relative z-10 w-[140px] sm:w-[170px] md:w-[190px] aspect-[2/3] rounded-[4px] overflow-hidden bg-[#181818] border border-white/10 group-hover/card:scale-105 group-hover/card:border-white/40 transition-all duration-300 shadow-xl flex flex-col justify-between p-3.5">
+                <div className="relative z-10 w-[140px] sm:w-[170px] md:w-[190px] xl:w-[210px] aspect-[2/3] rounded-[4px] overflow-hidden bg-[#181818] border border-white/10 group-hover/card:scale-105 group-hover/card:border-white/40 transition-all duration-300 shadow-xl flex flex-col justify-between p-3.5">
                   {/* Card Cover Image */}
                   <img
                     src={
