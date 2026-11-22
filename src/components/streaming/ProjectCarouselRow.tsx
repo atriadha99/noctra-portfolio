@@ -129,16 +129,29 @@ export default function ProjectCarouselRow({
           {/* Horizontal Scrolling Row */}
           <div
             ref={rowRef}
-            className="flex items-center gap-4 sm:gap-5 overflow-x-auto overflow-y-visible px-6 md:px-12 py-4 scroll-smooth no-scrollbar scrollbar-none"
+            className="flex items-center gap-4 sm:gap-5 overflow-x-auto overflow-y-visible px-6 md:px-12 py-4 scroll-smooth no-scrollbar scrollbar-none w-full"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch',
             }}
           >
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+            {projects.map((project) => {
+              const isSparse = projects.length <= 3;
+              const cardClassName = isSparse
+                ? 'flex-1 min-w-[280px] sm:min-w-[320px] max-w-full'
+                : projects.length === 4
+                ? 'xl:flex-1 flex-none w-[260px] sm:w-[300px] md:w-[340px] xl:w-auto xl:min-w-[320px]'
+                : 'flex-none w-[240px] sm:w-[280px] md:w-[320px] xl:w-[360px]';
+
+              return (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  className={cardClassName}
+                />
+              );
+            })}
           </div>
         </div>
       )}
