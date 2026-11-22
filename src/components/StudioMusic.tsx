@@ -6,8 +6,8 @@ import { Howl } from 'howler';
 import { useMusicStore } from '@/store/music-store';
 
 export default function StudioMusic() {
-  // Verified official Spotify playlist: "Coding Mode" (ambient / electronic focus beats)
-  const playlistId = '37i9dQZF1DX5trtVJQhWOS';
+  // Verified official Spotify playlist: "Deep Focus" (ambient & downtempo technical deep work, active & verified 200)
+  const playlistId = '37i9dQZF1DWZeKCadgRdKQ';
   const soundRef = useRef<Howl | null>(null);
   const { isPlaying, toggle } = useMusicStore();
 
