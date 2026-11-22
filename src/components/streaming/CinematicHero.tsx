@@ -74,7 +74,7 @@ export default function CinematicHero() {
           >
             {/* Real 16:9 Project Screenshot as Authentic Cinematic Billboard Backdrop */}
             <img
-              src={`/covers/${currentProject.id}.webp`}
+              src={`/covers/${currentProject.id}.webp?v=5`}
               alt={currentProject.title}
               className="absolute inset-0 w-full h-full object-cover object-top opacity-65 md:opacity-75 transition-opacity duration-700"
               onError={(e) => {

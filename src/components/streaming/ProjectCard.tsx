@@ -44,7 +44,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Task 11: 16:9 Cover Image (Screenshots for live projects, dark consistent template for others) */}
         <div className="absolute inset-0 overflow-hidden bg-[#181818]">
           <img
-            src={`/covers/${project.id}.webp`}
+            src={`/covers/${project.id}.webp?v=5`}
             alt={project.title}
             loading="lazy"
             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
@@ -166,7 +166,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         >
           {/* Cover image in hover preview */}
           <img
-            src={`/covers/${project.id}.webp`}
+            src={`/covers/${project.id}.webp?v=5`}
             alt={project.title}
             className="absolute inset-0 w-full h-full object-cover object-top opacity-70 group-hover:opacity-85 transition-opacity duration-300 pointer-events-none"
             onError={(e) => {

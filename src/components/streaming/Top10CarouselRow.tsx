@@ -97,10 +97,12 @@ export default function Top10CarouselRow({ id, title, projects }: Top10CarouselR
                   <img
                     src={
                       project.id === 'pt-abb-dashboard'
-                        ? '/covers/pt-abb-dashboard-portrait.webp'
+                        ? '/covers/pt-abb-dashboard-portrait.webp?v=5'
                         : project.id === 'portal-ekskul-binusa'
-                        ? '/covers/portal-ekskul-binusa-portrait.webp'
-                        : `/covers/${project.id}.webp`
+                        ? '/covers/portal-ekskul-binusa-portrait.webp?v=5'
+                        : project.id === 'noctra-portfolio'
+                        ? '/covers/noctra-portfolio-portrait.webp?v=5'
+                        : `/covers/${project.id}.webp?v=5`
                     }
                     alt={project.title}
                     className="absolute inset-0 w-full h-full object-cover object-center opacity-50 group-hover/card:opacity-75 transition-opacity"
