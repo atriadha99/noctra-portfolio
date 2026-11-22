@@ -125,75 +125,8 @@ export const projectsData: Project[] = [
     }
   },
   {
-    id: 'compawnion',
-    number: '02',
-    title: 'COMPawnion',
-    tagline: 'Smart Pet Health, Nutrition & Animal Companion Platform',
-    taglineEn: 'Smart Pet Health, Nutrition & Animal Companion Platform',
-    category: 'Mobile & Web Companion',
-    categoryGroup: 'Fintech & Mobile',
-    categories: ['Mobile Development', 'UI/UX', 'Web Development'],
-    year: '2025 — 2026',
-    role: 'Full-Stack Developer & UX Architect',
-    description: 'Platform digital komprehensif pendamping pemilik hewan peliharaan. Menghadirkan rekam medis digital satwa, kalkulator nutrisi cerdas berdasarkan ras dan berat badan, reminder jadwal vaksinasi berkala, serta radar klinik veteriner siaga 24 jam.',
-    descriptionEn: "Comprehensive digital companion platform for pet owners. Features digital medical logs, species and weight-tailored nutrition calculators, recurring vaccination schedules, and a 24-hour veterinary emergency radar.",
-    techStack: ['React Native', 'Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Leaflet Maps'],
-    projectUrl: 'https://compawnion.vercel.app',
-    verifiedLiveUrl: 'https://compawnion.vercel.app',
-    githubUrl: 'https://github.com/atriadha99/compawnion',
-    verifiedGithubUrl: '',
-    isFeatured: true,
-    isContinueBuilding: true,
-    progressPercentage: 74,
-    developmentStatus: 'Sprint 3 • Clinic Radar & Health Logs',
-    currentSprint: 'Emergency Vet Geolocation & Push Vaccine Reminders',
-    highlightBadge: 'Mobile & Pet-Tech',
-    matchScore: 97,
-    contentRating: 'PET-HEALTH',
-    runtime: 'Local-First Sync',
-    accentColor: '#ec4899',
-    streamingRows: ['trending', 'fintech', 'continue', 'featured'],
-    videoPreviewType: 'companion',
-    metrics: [
-      { label: 'Vaccination Reminders', value: '100% On-Schedule' },
-      { label: 'Nutrition Accuracy', value: 'Species-tailored' },
-      { label: 'Vet Clinic Locator', value: '< 5km Radius' }
-    ],
-    architectureNotes: [
-      'Dual-client architecture sharing schema definitions between Next.js web portal and mobile app',
-      'Offline-first medical logbook caching for emergency check-ups in low-connectivity shelters',
-      'Dynamic veterinary map pins with real-time operational status (open now / 24-hour on-call)',
-      'Pet age-to-human milestone converter with interactive growth velocity curves'
-    ],
-    screenshots: [
-      {
-        title: 'Pet Health Dashboard & Immunization Timeline',
-        caption: 'Visual medical passport displaying rabies, distemper, and deworming milestones.',
-        tag: 'Medical Card'
-      },
-      {
-        title: 'Emergency 24H Veterinary Clinic Radar',
-        caption: 'Geo-spatial proximity finder highlighting open emergency animal hospitals.',
-        tag: 'Map & Geo'
-      },
-      {
-        title: 'Daily Calorie & Nutrition Calculator',
-        caption: 'Weight management curve with species-calibrated dry/wet food intake suggestions.',
-        tag: 'Nutrition'
-      }
-    ],
-    caseStudy: {
-      overview: 'COMPawnion lahir untuk mengakhiri kelalaian jadwal vaksinasi dan perawatan darurat satwa kesayangan akibat buku vaksinasi kertas yang sering terselip atau rusak.',
-      problem: 'Pemilik hewan peliharaan di Indonesia kerap lupa tanggal jadwal pengulangan vaksin tahunan, kesulitan mencari dokter hewan jaga darurat saat malam hari, dan bingung menentukan takaran nutrisi yang seimbang.',
-      approach: 'Menciptakan "buku paspor kesehatan satwa digital" dengan estetika ramah dan hangat. Memadukan kemudahan pencatatan riwayat klinik, alarm pengingat otomatis, dan panduan pertolongan pertama satwa.',
-      implementation: 'Arsitektur frontend dibangun dengan Next.js dan Tailwind CSS, dirancang mobile-first dengan gestur ramah jempol. Terhubung ke Supabase dengan sinkronisasi rekam medis dan integrasi geolokasi peta Leaflet.',
-      result: 'Memberikan ketenangan pikiran bagi pemilik hewan, mendigitalisasi ratusan data satwa, dan mempermudah dokter hewan membaca rekam medis pasien secara cepat saat kunjungan klinik.',
-      technologies: ['Next.js', 'React Native', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Leaflet API']
-    }
-  },
-  {
     id: 'temucashflow',
-    number: '03',
+    number: '02',
     title: 'TemuCashflow',
     tagline: 'Dual-Platform Financial Management & Cash Flow Engine',
     taglineEn: 'Dual-Platform Financial Management & Cash Flow Engine',
@@ -260,7 +193,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'pt-abb-dashboard',
-    number: '04',
+    number: '03',
     title: 'PT ABB Dashboard',
     tagline: 'Enterprise Industrial Analytics & Operational Monitoring',
     taglineEn: 'Enterprise Industrial Analytics & Operational Monitoring',
@@ -327,7 +260,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'noctra-portfolio',
-    number: '05',
+    number: '04',
     title: 'NOCTRA Portfolio',
     tagline: 'Digital Product Studio & Interactive Streaming Experience',
     taglineEn: 'Digital Product Studio & Interactive Streaming Experience',
@@ -390,7 +323,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'sabda-alam-web',
-    number: '06',
+    number: '05',
     title: 'Sabda Alam Tourism Portal',
     tagline: 'Eco-Tourism Destination Guide & Booking Directory',
     taglineEn: 'Eco-Tourism Destination Guide & Booking Directory',
@@ -453,7 +386,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'portal-ekskul-binusa',
-    number: '07',
+    number: '06',
     title: 'Portal Ekskul SMK Binusa',
     tagline: 'Vocational Extracurricular Information & Quota System',
     taglineEn: 'Vocational Extracurricular Information & Quota System',
@@ -516,7 +449,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'lendspace-hki',
-    number: '08',
+    number: '07',
     title: 'Lendspace HKI',
     tagline: 'Commercial Asset & Creative Space Leasing Ecosystem',
     taglineEn: 'Commercial Asset & Creative Space Leasing Ecosystem',
@@ -579,7 +512,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'noctra-velocitra',
-    number: '09',
+    number: '08',
     title: 'Noctra Velocitra',
     tagline: 'High-Performance Web Animation & Kinetic Tech Lab',
     taglineEn: 'High-Performance Web Animation & Kinetic Tech Lab',
@@ -642,7 +575,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'yare-coffee',
-    number: '10',
+    number: '09',
     title: 'Yare! Coffee Bintaro',
     tagline: 'Specialty Coffee Brand Experience & Digital Ordering Hub',
     taglineEn: 'Specialty Coffee Brand Experience & Digital Ordering Hub',
@@ -704,7 +637,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'temulab-mobile',
-    number: '11',
+    number: '10',
     title: 'TemuLab Android App',
     tagline: 'Interactive Learning & STEM Student Companion',
     taglineEn: 'Interactive Learning & STEM Student Companion',
@@ -766,7 +699,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'ecommerce-platform',
-    number: '12',
+    number: '11',
     title: 'E-Commerce Platform',
     tagline: 'Modern Commercial Retail & High-Speed Checkout Experience',
     taglineEn: 'Modern Commercial Retail & High-Speed Checkout Experience',
