@@ -6,8 +6,8 @@ import { Howl } from 'howler';
 import { useMusicStore } from '@/store/music-store';
 
 export default function StudioMusic() {
-  // Verified official Spotify playlist: "Deep Focus" (ambient & downtempo technical deep work, active & verified 200)
-  const playlistId = '37i9dQZF1DWZeKCadgRdKQ';
+  // Dika's official YouTube Music playlist: "Alternative Rock & Pop Punk" (140 tracks)
+  const playlistId = 'PLUtoEI1_5Qn8';
   const soundRef = useRef<Howl | null>(null);
   const { isPlaying, toggle } = useMusicStore();
 
@@ -52,7 +52,7 @@ export default function StudioMusic() {
           </h2>
 
           <p className="text-sm md:text-base text-zinc-400 font-light leading-relaxed">
-            Late-night Bandung frequency. A curated rotation of ambient electronica, lo-fi downtempo, and atmospheric soundscapes accompanying technical deep work.
+            Late-night Bandung frequency. A curated rotation of alternative rock, emo, and pop punk anthems accompanying technical deep work.
           </p>
 
           {/* Ambient Engine Control */}
@@ -76,7 +76,7 @@ export default function StudioMusic() {
 
             <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
               <Headphones className="w-3.5 h-3.5 text-zinc-600" />
-              SPOTIFY EMBED
+              YOUTUBE MUSIC EMBED
             </span>
           </div>
         </div>
@@ -87,24 +87,24 @@ export default function StudioMusic() {
             {/* Top Player Metadata Bar */}
             <div className="flex items-center justify-between text-xs font-mono text-zinc-400 mb-4 pb-3 border-b border-white/[0.06]">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-white font-semibold">NOCTRA // MIDNIGHT FREQUENCY</span>
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-white font-semibold">ALTERNATIVE ROCK & POP PUNK</span>
               </div>
-              <span className="text-[10px] text-zinc-500 tracking-wider">OFFICIAL PLAYLIST</span>
+              <span className="text-[10px] text-zinc-500 tracking-wider">YOUTUBE MUSIC PLAYLIST • 140 TRACKS</span>
             </div>
 
-            {/* Spotify Embed iFrame */}
+            {/* YouTube Music Embed iFrame */}
             <div className="relative rounded-xl overflow-hidden bg-black/40">
               <iframe
-                title="NOCTRA Coding Playlist"
+                title="Alternative Rock & Pop Punk - YouTube Music Playlist"
                 data-testid="embed-iframe"
                 style={{ borderRadius: '12px' }}
-                src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator&theme=0`}
+                src={`https://www.youtube.com/embed/videoseries?list=${playlistId}`}
                 width="100%"
                 height="440"
                 frameBorder={0}
                 allowFullScreen
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 loading="lazy"
               />
             </div>

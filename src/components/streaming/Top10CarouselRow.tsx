@@ -98,6 +98,8 @@ export default function Top10CarouselRow({ id, title, projects }: Top10CarouselR
                     src={
                       project.id === 'pt-abb-dashboard'
                         ? '/covers/pt-abb-dashboard-portrait.webp'
+                        : project.id === 'portal-ekskul-binusa'
+                        ? '/covers/portal-ekskul-binusa-portrait.webp'
                         : `/covers/${project.id}.webp`
                     }
                     alt={project.title}
