@@ -14,6 +14,7 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import StreamingDetailModal from '@/components/streaming/StreamingDetailModal';
 import EasterEggModal from '@/components/streaming/EasterEggModal';
+import NoctraSecretArcade from '@/components/arcade/NoctraSecretArcade';
 import StreamingToast from '@/components/streaming/StreamingToast';
 import KeyboardNavManager from '@/components/streaming/KeyboardNavManager';
 
@@ -70,6 +71,9 @@ export default function HomePage() {
 
       {/* Hidden Easter Egg: Director's Secret Cut & Developer Mode */}
       <EasterEggModal />
+
+      {/* Hidden Easter Egg: Noctra Secret Arcade (Upside Down 16-bit Retro Game) */}
+      <NoctraSecretArcade />
 
       {/* Global Interactive Notification Toast */}
       <StreamingToast />

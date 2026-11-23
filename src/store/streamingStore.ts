@@ -41,6 +41,11 @@ interface StreamingState {
   isEasterEggOpen: boolean;
   openEasterEgg: () => void;
   closeEasterEgg: () => void;
+
+  // Secret Arcade Game State
+  isArcadeOpen: boolean;
+  openArcade: () => void;
+  closeArcade: () => void;
 }
 
 export const useStreamingStore = create<StreamingState>((set, get) => ({
@@ -55,6 +60,10 @@ export const useStreamingStore = create<StreamingState>((set, get) => ({
   isEasterEggOpen: false,
   openEasterEgg: () => set({ isEasterEggOpen: true }),
   closeEasterEgg: () => set({ isEasterEggOpen: false }),
+
+  isArcadeOpen: false,
+  openArcade: () => set({ isArcadeOpen: true }),
+  closeArcade: () => set({ isArcadeOpen: false }),
 
   selectedService: 'Landing page (mulai Rp1.500.000)',
   setSelectedService: (service) => set({ selectedService: service }),

@@ -42,8 +42,38 @@ export default function StreamingNavbar() {
     toggleMute,
     setSelectedCategory,
     openEasterEgg,
+    openArcade,
     showToast,
   } = useStreamingStore();
+
+  // Noctra Secret Arcade Easter Egg Trigger State
+  const [logoClicks, setLogoClicks] = useState(0);
+  const [isGlitching, setIsGlitching] = useState(false);
+  const clickTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (clickTimerRef.current) {
+      clearTimeout(clickTimerRef.current);
+    }
+
+    const nextClicks = logoClicks + 1;
+
+    if (nextClicks >= 5) {
+      e.preventDefault();
+      setLogoClicks(5);
+      setIsGlitching(true);
+      setTimeout(() => {
+        openArcade();
+        setIsGlitching(false);
+        setLogoClicks(0);
+      }, 600);
+    } else {
+      setLogoClicks(nextClicks);
+      clickTimerRef.current = setTimeout(() => {
+        setLogoClicks(0);
+      }, 3000);
+    }
+  };
 
   const { language, setLanguage, toggleLanguage, t } = useLanguageStore();
 
@@ -135,15 +165,31 @@ export default function StreamingNavbar() {
           {/* Left: Netflix Red Logo & Navigation Links */}
           <div className="flex items-center gap-6 lg:gap-10">
             {/* Iconic Netflix Red Wordmark */}
-            <a
-              href="#hero"
-              className="flex items-center focus:outline-none group tracking-tighter"
-              aria-label="Noctra Home"
-            >
-              <span className="font-display text-2xl sm:text-3xl md:text-[32px] font-black tracking-[-0.04em] text-[#E50914] drop-shadow-sm uppercase">
-                NOCTRA
-              </span>
-            </a>
+            <div className="flex items-center">
+              <a
+                href="#hero"
+                onClick={handleLogoClick}
+                className="flex items-center focus:outline-none group tracking-tighter"
+                aria-label="Noctra Home"
+              >
+                <span
+                  className={`font-display text-2xl sm:text-3xl md:text-[32px] font-black tracking-[-0.04em] uppercase transition-all duration-150 ${
+                    isGlitching
+                      ? 'text-red-500 [text-shadow:0_0_15px_#ff0000,-3px_0_#00ffff,3px_0_#ff00ff] animate-pulse scale-105'
+                      : 'text-[#E50914] drop-shadow-sm'
+                  }`}
+                >
+                  NOCTRA
+                </span>
+              </a>
+
+              {/* Secret Arcade Progress Indicator */}
+              {logoClicks > 0 && (
+                <span className="ml-1.5 px-1 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider text-red-400 bg-red-950/60 border border-red-500/40 animate-pulse pointer-events-none select-none">
+                  ◉ {logoClicks}/5
+                </span>
+              )}
+            </div>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-[13px] font-normal">
