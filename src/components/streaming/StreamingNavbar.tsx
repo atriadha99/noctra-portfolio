@@ -169,9 +169,16 @@ export default function StreamingNavbar() {
               <a
                 href="#hero"
                 onClick={handleLogoClick}
-                className="flex items-center focus:outline-none group tracking-tighter"
+                className="flex items-center gap-2 focus:outline-none group tracking-tighter"
                 aria-label="Noctra Home"
               >
+                <img
+                  src="/noctra-logo.svg"
+                  alt=""
+                  width={30}
+                  height={30}
+                  className="w-7 h-7 sm:w-[30px] sm:h-[30px] shrink-0"
+                />
                 <span
                   className={`font-display text-2xl sm:text-3xl md:text-[32px] font-black tracking-[-0.04em] uppercase transition-all duration-150 ${
                     isGlitching

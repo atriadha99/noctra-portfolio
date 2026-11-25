@@ -31,10 +31,18 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Andika Agung Triadha (NOCTRA)' }],
   creator: 'NOCTRA',
+  icons: {
+    icon: [
+      { url: '/noctra-logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/noctra-logo.svg',
+    apple: '/noctra-logo.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://noctra-dev.vercel.app',
+    url: 'https://atriadha.my.id',
     title: 'NOCTRA / ANDIKA AGUNG TRIADHA',
     description: 'Front-End Developer & Digital Product Builder. Building thoughtful web and mobile experiences with modern technologies.',
     siteName: 'NOCTRA Studio'
