@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Github, Linkedin, ArrowUpRight, Send, CheckCircle2, AlertCircle, Download, MessageCircle } from 'lucide-react';
 import { useLanguageStore } from '@/store/languageStore';
 import { useStreamingStore } from '@/store/streamingStore';
+import { supabase } from '@/lib/supabase';
 
 export default function ContactSection() {
   const { language, t } = useLanguageStore();
@@ -14,6 +15,7 @@ export default function ContactSection() {
     email: '',
     service: selectedService || 'Landing page (mulai Rp1.500.000)',
     message: '',
+    website: '',
   });
 
   // Sync when selectedService in store updates from the Services section
@@ -33,6 +35,13 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (status === 'submitting') return;
+
+    // Honeypot anti-spam: if hidden field is filled by a bot, abort silently
+    if (formData.website) {
+      return;
+    }
+
     if (!formData.name.trim()) {
       setStatus('error');
       setErrorMessage(t('Mohon cantumkan nama Anda.', 'Please provide your name.'));
@@ -51,37 +60,40 @@ export default function ContactSection() {
       return;
     }
 
+    if (!supabase) {
+      setStatus('error');
+      setErrorMessage(t('Gagal mengirim, coba lagi.', 'Failed to send, please try again.'));
+      return;
+    }
+
     setStatus('submitting');
+    setErrorMessage('');
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY',
-          name: formData.name,
-          email: formData.email,
-          service: formData.service,
-          message: formData.message,
-          subject: `NOCTRA Inbound Inquiry from ${formData.name}`,
-        }),
+      const { error } = await supabase.from('contact_messages').insert({
+        nama: formData.name.trim(),
+        email: formData.email.trim(),
+        jenis_layanan: formData.service ? formData.service : null,
+        pesan: formData.message.trim(),
       });
 
-      const data = await res.json();
-
-      if (data.success) {
-        setStatus('success');
-        setFormData({ name: '', email: '', service: selectedService || 'Landing page (mulai Rp1.500.000)', message: '' });
-      } else {
-        setStatus('success');
-        setFormData({ name: '', email: '', service: selectedService || 'Landing page (mulai Rp1.500.000)', message: '' });
+      if (error) {
+        setStatus('error');
+        setErrorMessage(t('Gagal mengirim, coba lagi.', 'Failed to send, please try again.'));
+        return;
       }
-    } catch {
+
       setStatus('success');
-      setFormData({ name: '', email: '', service: selectedService || 'Landing page (mulai Rp1.500.000)', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        service: selectedService || 'Landing page (mulai Rp1.500.000)',
+        message: '',
+        website: '',
+      });
+    } catch {
+      setStatus('error');
+      setErrorMessage(t('Gagal mengirim, coba lagi.', 'Failed to send, please try again.'));
     }
   };
 
@@ -244,7 +256,7 @@ export default function ContactSection() {
             {status === 'success' && (
               <div className="p-4 rounded-[4px] bg-[#46d369]/10 border border-[#46d369]/30 text-[#46d369] text-xs font-semibold flex items-center gap-3 mb-6">
                 <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                <span>{t('Pesan berhasil diterima! Saya akan segera merespons ke email Anda.', 'Message received! I will reply to your email shortly.')}</span>
+                <span>{t('Pesan terkirim, terima kasih!', 'Message sent, thank you!')}</span>
               </div>
             )}
 
@@ -256,6 +268,19 @@ export default function ContactSection() {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot anti-spam field */}
+              <div style={{ display: 'none' }} aria-hidden="true">
+                <label htmlFor="inquiry-website">Website</label>
+                <input
+                  id="inquiry-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                />
+              </div>
               <div>
                 <label htmlFor="inquiry-name" className="block text-xs font-bold text-[#a3a3a3] uppercase tracking-wider mb-1.5">
                   {t('NAMA ANDA *', 'YOUR NAME *')}
